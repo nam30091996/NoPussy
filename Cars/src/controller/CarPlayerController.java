@@ -1,0 +1,143 @@
+package controller;
+
+import model.*;
+import util.GameUtils;
+import view.GameDrawer;
+import view.ImageDrawer;
+
+import java.awt.*;
+
+/**
+ * Created by MyComputer on 5/11/2016.
+ */
+public class CarPlayerController extends SingleController implements Colliable {
+    public final int SPEED = 5;
+    public final int TIME_SHOOT = 10;
+    private boolean ableToShoot = false;
+    private boolean shield = false;
+    private BulletControllerManager bulletControllerManager;
+    private static final int MAX_BULLET_COUNT = 1;
+    private int count = 0;
+
+    public CarPlayerController(CarPlayer gameObject, GameDrawer gameDrawer) {
+        super(gameObject, gameDrawer);
+        bulletControllerManager = new BulletControllerManager();
+        CollisionPool.getInst().add(this);
+    }
+
+    public void move(CarPlayerDirection carPlayerDirection) {
+        switch (carPlayerDirection) {
+            case NONE:
+                break;
+            case UP:
+                this.gameVector.dy = -SPEED;
+                break;
+            case DOWN:
+                this.gameVector.dy = SPEED;
+                break;
+            case LEFT:
+                this.gameVector.dx = -SPEED;
+                break;
+            case RIGHT:
+                this.gameVector.dx = SPEED;
+                break;
+            case STOP_X:
+                this.gameVector.dx = 0;
+                break;
+            case STOP_Y:
+                this.gameVector.dy = 0;
+                break;
+        }
+
+    }
+
+    public void shoot() {
+        if(ableToShoot) {
+            if (bulletControllerManager.size() < MAX_BULLET_COUNT) {
+                Bullet bullet = new Bullet(
+                        gameObject.getX() + gameObject.getWidth() / 2 - Bullet.DEFAULT_WIDTH / 2,
+                        gameObject.getY(),
+                        Bullet.DEFAULT_WIDTH,
+                        Bullet.DEFAULT_HEIGHT
+                );
+                ImageDrawer imageDrawer = new ImageDrawer("resources/bullet.png");
+                BulletController bulletController = new BulletController(
+                        bullet,
+                        imageDrawer
+                );
+
+                this.bulletControllerManager.add(bulletController);
+            }
+        }
+    }
+
+    private static CarPlayerController carPlayerController;
+    public static CarPlayerController getCarPlayerController() {
+        if (carPlayerController == null) {
+            CarPlayer carPlayer = new CarPlayer(100, 300, 50, 100);
+            ImageDrawer carPlayerDraw = new ImageDrawer("resources/green_car.png");
+            carPlayerController = new CarPlayerController(carPlayer, carPlayerDraw);
+        }
+        return carPlayerController;
+    }
+
+    public static void setNull() {
+        carPlayerController = null;
+    }
+
+    @Override
+    public void run() {
+        if (this.gameObject.isAlive()) {
+            count ++;
+            Rectangle rectangle=this.gameObject.getNextRect(this.gameVector);
+            if(GameConfig.getInst().durationInSeconds(count) >= TIME_SHOOT && this.ableToShoot) {
+                count = 0;
+                this.ableToShoot = false;
+                this.shield = false;
+            }
+            if(GameConfig.getInst().isInScreen(rectangle)) {
+                super.run();
+                this.bulletControllerManager.run();
+            }
+        }
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        if (this.gameObject.isAlive()) {
+            super.paint(g);
+            this.bulletControllerManager.paint(g);
+        }
+    }
+
+    @Override
+    public void onCollide(Colliable c) {
+        if (c instanceof EnemyCarController || c instanceof StoneController) {
+            GameUtils.playSound("resources/die_sound.wav", false);
+            if(!this.shield) {
+                ((CarPlayer) gameObject).decreaseHP();
+            }
+            if(((CarPlayer)gameObject).getHp() <= 0) {
+                this.gameObject.setAlive(false);
+            }
+        } else if(c instanceof CoinController) {
+            GameUtils.playSound("resources/get_score_sound.wav", false);
+            if(((CoinController)c).getCoinType() == CoinType.RED) EnemyCarController.increaseSpeed(-1);
+            c.getGameObject().setAlive(false);
+        } else if(c instanceof GiftController) {
+            count = 0;
+            switch (((Gift)c.getGameObject()).getGiftType()) {
+                case SHOOT:
+                    this.ableToShoot = true;
+                    break;
+                case SHIELD:
+                    this.shield = true;
+                    break;
+                case HEART:
+                    ((GameObjectWithHP)this.getGameObject()).increaseHP();
+                    break;
+            }
+            this.ableToShoot = true;
+        }
+    }
+}
