@@ -17,6 +17,11 @@ import java.io.PrintWriter;
  * Created by 1918 on 15-May-16.
  */
 public class GameOverScene extends GameScene {
+    public static final int DEFAULT_X[] = new int[]{190, 180, 160, 145, 130};
+    public static final int DEFAULT_HIGHSCORE_Y = 108;
+    public static final int DEFAULT_SCORE_Y = 210;
+
+
     Image background;
 
     public GameOverScene() {
