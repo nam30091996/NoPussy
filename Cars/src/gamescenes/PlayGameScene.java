@@ -61,9 +61,14 @@ public class PlayGameScene extends GameScene {
 
     @Override
     public void run() {
+
         CollisionPool.getInst().run();
         for(Controller controller : controllerVect) {
-            controller.run();
+            try {
+                controller.run();
+            } catch (NullPointerException ex) {
+
+            }
         }
 
         GamePointControllerManager.getInst().updatePoint(((CarPlayer) carPlayerController.getGameObject()).getPoint());
@@ -79,7 +84,11 @@ public class PlayGameScene extends GameScene {
     public void paint(Graphics g) {
         g.drawImage(backgroundImage, 0, 0, gameConfig.getScreenWidth(), gameConfig.getScreenHeight(), null);
         for (Controller controller : controllerVect) {
-            controller.paint(g);
+            try {
+                controller.paint(g);
+            } catch (Exception ex) {
+
+            }
         }
     }
 
@@ -101,7 +110,7 @@ public class PlayGameScene extends GameScene {
                 carPlayerDirection = CarPlayerDirection.RIGHT;
                 break;
             case KeyEvent.VK_SPACE:
-                carPlayerController.shoot();
+                if(!PlayGameScene.pause) carPlayerController.shoot();
                 break;
             case KeyEvent.VK_P:
                 this.pause = true;

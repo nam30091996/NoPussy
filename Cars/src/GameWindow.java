@@ -50,7 +50,7 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
         }
 
         this.setVisible(true);
-        this.setLocation((int)(width - GameConfig.DEFAULT_SCREEN_WIDTH) / 2, 0);
+        this.setLocation((int)(width - GameConfig.DEFAULT_SCREEN_WIDTH) / 2, (int)(height - GameConfig.DEFAULT_SCREEN_HEIGHT)/2);
         this.setSize(GameConfig.DEFAULT_SCREEN_WIDTH, GameConfig.DEFAULT_SCREEN_HEIGHT);
 
 
