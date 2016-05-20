@@ -20,7 +20,7 @@ public class CollisionPool {
     }
 
     public void run() {
-        System.out.println(this.colliableVector.size());
+//        System.out.println(this.colliableVector.size());
         Iterator<Colliable> iterator = colliableVector.iterator();
         while(iterator.hasNext()) {
             Colliable c = iterator.next();

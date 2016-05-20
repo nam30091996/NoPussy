@@ -5,6 +5,7 @@ import controller.CarPlayerControllers.CarPlayerController;
 import controller.Colliable;
 import controller.CollisionPool;
 import controller.SingleController;
+import gamescenes.PlayGameScene;
 import model.EnemyCar;
 import model.GameConfig;
 import model.GameVector;
@@ -22,11 +23,21 @@ import java.awt.*;
 public class EnemyCarController extends SingleController implements Colliable {
     public final static int SPEED = 5; //Nam: để 3 chậm quá :v
     private static int speed = SPEED;
+    private int count = 0;
+    private EnemyCarType enemyCarType;
 
     public EnemyCarController(EnemyCar gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         this.gameVector.dy = speed;
         CollisionPool.getInst().add(this);
+    }
+
+    public EnemyCarController(EnemyCar gameObject, GameDrawer gameDrawer, EnemyCarType enemyCarType) {
+        super(gameObject, gameDrawer);
+        this.gameVector.dy = speed;
+        this.enemyCarType = enemyCarType;
+        CollisionPool.getInst().add(this);
+
     }
 
     public static void increaseSpeed() {
@@ -47,7 +58,19 @@ public class EnemyCarController extends SingleController implements Colliable {
 
     @Override
     public void run() {
-        super.run();
+        if (!PlayGameScene.pause) {
+            super.run();
+            count ++;
+        }
+        if(GameConfig.getInst().durationInSeconds(count) >= 2 && this.enemyCarType == EnemyCarType.BLACK) {
+            count = 0;
+            int lane;
+            //do {
+                lane = (int) (Math.random() * 4);
+                this.getGameObject().setX(GameConfig.LANE[lane].x);
+            //} while (this.check() == false);
+
+        }
         if(((EnemyCar)this.getGameObject()).getLifeState() == LifeState.DYING) {
             CollisionPool.getInst().remove(this);
             this.gameVector.dy = 0;
@@ -58,6 +81,13 @@ public class EnemyCarController extends SingleController implements Colliable {
         if (!GameConfig.getInst().isInScreen(this.gameObject) && !GameConfig.getInst().isInStartPosition(this.gameObject)) {
             this.gameObject.setAlive(false);
         }
+    }
+
+    private boolean check() {
+        for(SingleController enemyCarController : EnemyCarControllerManager.getInst().getSingleControllerVector()) {
+            if(this.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())) return false;
+        }
+        return true;
     }
 
     @Override
@@ -72,6 +102,11 @@ public class EnemyCarController extends SingleController implements Colliable {
         if (c instanceof CarPlayerController || c instanceof BulletController) {
             ((EnemyCar)this.gameObject).decreaseHP();
         }
+//        if(c instanceof EnemyCarController) {
+//            if(this.enemyCarType == EnemyCarType.BLACK) {
+//
+//            }
+//        }
     }
 
     //DuTQ: tạo ô tô địch theo loại ô tô và làn
@@ -79,26 +114,26 @@ public class EnemyCarController extends SingleController implements Colliable {
         EnemyCar enemyCar = null;
         switch (lanePosition) {
             case LANE1:
-                enemyCar = new EnemyCar(GameConfig.LANE_1.x,
-                                        GameConfig.LANE_2.y,
+                enemyCar = new EnemyCar(GameConfig.LANE[0].x,
+                                        GameConfig.LANE[0].y,
                                         EnemyCar.WIDTH,
                                         EnemyCar.HEIGHT);
                 break;
             case LANE2:
-                enemyCar = new EnemyCar(GameConfig.LANE_2.x,
-                                        GameConfig.LANE_2.y,
+                enemyCar = new EnemyCar(GameConfig.LANE[1].x,
+                                        GameConfig.LANE[1].y,
                                         EnemyCar.WIDTH,
                                         EnemyCar.HEIGHT);
                 break;
             case LANE3:
-                enemyCar = new EnemyCar(GameConfig.LANE_3.x,
-                                        GameConfig.LANE_3.y,
+                enemyCar = new EnemyCar(GameConfig.LANE[2].x,
+                                        GameConfig.LANE[2].y,
                                         EnemyCar.WIDTH,
                                         EnemyCar.HEIGHT);
                 break;
             case LANE4:
-                enemyCar = new EnemyCar(GameConfig.LANE_4.x,
-                                        GameConfig.LANE_4.y,
+                enemyCar = new EnemyCar(GameConfig.LANE[3].x,
+                                        GameConfig.LANE[3].y,
                                         EnemyCar.WIDTH,
                                         EnemyCar.HEIGHT);
                 break;
@@ -114,6 +149,9 @@ public class EnemyCarController extends SingleController implements Colliable {
             case PINK:
                 imageDrawer = new ImageDrawer("resources/pink_car.png");
                 break;
+            case BLACK:
+                imageDrawer = new ImageDrawer("resources/black_car.png");
+                break;
         }
         String[] images = new String[] {"resources/explosion/Explosion1.png",
                 "resources/explosion/Explosion2.png",
@@ -123,7 +161,7 @@ public class EnemyCarController extends SingleController implements Colliable {
                 "resources/explosion/Explosion6.png"};
         DeadAnimationDrawer deadAnimationDrawer = new DeadAnimationDrawer(images);
         EnemyCarDrawer enemyCarDrawer = new EnemyCarDrawer(imageDrawer, deadAnimationDrawer);;
-        EnemyCarController enemyCarController = new EnemyCarController(enemyCar, enemyCarDrawer);
+        EnemyCarController enemyCarController = new EnemyCarController(enemyCar, enemyCarDrawer, enemyCarType);
         return enemyCarController;
     }
 }

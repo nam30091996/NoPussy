@@ -6,15 +6,15 @@ import java.awt.*;
  * Created by qhuydtvt on 5/6/2016.
  */
 public class GameConfig {
-    //DuTQ: điểm xuất phát của xe địch
-    public static final Point LANE_1 = new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT);
-    public static final Point LANE_2 = new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 3 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT);
-    public static final Point LANE_3 = new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 5 - EnemyCar.WIDTH / 2 + 8, -EnemyCar.HEIGHT);
-    public static final Point LANE_4 = new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 7 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT);
-
     public static final int DEFAULT_SCREEN_WIDTH = 420;
     public static final int DEFAULT_SCREEN_HEIGHT = 720;
     public static final int DEFAULT_THREAD_DELAY = 17;
+    //DuTQ: điểm xuất phát của xe địch
+    public static final Point[] LANE = new Point[]{new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT),
+        new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 3 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT),
+            new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 5 - EnemyCar.WIDTH / 2 + 8, -EnemyCar.HEIGHT),
+            new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 7 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT)};
+
 
     private int screenWidth;
     private int screenHeight;
