@@ -1,9 +1,12 @@
 package controller.BulletControllers;
 
 import controller.*;
+import controller.CarPlayerControllers.CarPlayerController;
 import controller.EnemyCarControllers.EnemyCarController;
+import controller.PersonController.PersonController;
 import controller.StoneControllers.StoneController;
 import model.Bullet;
+import model.CarPlayer;
 import model.GameConfig;
 import model.GameVector;
 import view.ImageDrawer;
@@ -39,6 +42,10 @@ public class BulletController extends SingleController implements Colliable {
     @Override
     public void onCollide(Colliable c) {
         if(c instanceof EnemyCarController || c instanceof StoneController) {
+            this.getGameObject().setAlive(false);
+        }
+        else if(c instanceof PersonController) {
+            ((CarPlayer) CarPlayerController.getCarPlayerController().getGameObject()).decreaseHP(2);
             this.getGameObject().setAlive(false);
         }
     }

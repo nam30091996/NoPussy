@@ -3,6 +3,8 @@ package gamescenes;
 import controller.*;
 import controller.CarPlayerControllers.CarPlayerController;
 import controller.CarPlayerControllers.CarPlayerDirection;
+import controller.PersonController.PersonController;
+import controller.PersonController.PersonControllerManager;
 import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.CoinControllers.CoinControllerManager;
 import controller.EnemyCarControllers.EnemyCarController;
@@ -46,6 +48,7 @@ public class PlayGameScene extends GameScene {
         controllerVect.add(GamePointControllerManager.getInst());
         controllerVect.add(CarPlayerHPControllerManager.getInst());
         controllerVect.add(GiftControllerManager.getInst());
+        controllerVect.add(PersonControllerManager.getInst());
 
 
 
@@ -168,6 +171,7 @@ public class PlayGameScene extends GameScene {
         StoneControllerManager.setNull();
         CarPlayerController.setNull();
         GiftControllerManager.setNull();
+        PersonControllerManager.setNull();
         EnemyCarController.setSpeed(EnemyCarController.SPEED);
         CollisionPool.getInst().reset();
         this.carPlayerController = CarPlayerController.getCarPlayerController();

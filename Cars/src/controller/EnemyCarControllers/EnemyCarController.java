@@ -4,12 +4,11 @@ import controller.BulletControllers.BulletController;
 import controller.CarPlayerControllers.CarPlayerController;
 import controller.Colliable;
 import controller.CollisionPool;
+import controller.PersonController.PersonController;
+import controller.PersonController.PersonControllerManager;
 import controller.SingleController;
 import gamescenes.PlayGameScene;
-import model.EnemyCar;
-import model.GameConfig;
-import model.GameVector;
-import model.LifeState;
+import model.*;
 import view.DeadAnimationDrawer;
 import view.EnemyCarDrawer;
 import view.GameDrawer;
@@ -25,6 +24,8 @@ public class EnemyCarController extends SingleController implements Colliable {
     private static int speed = SPEED;
     private int count = 0;
     private EnemyCarType enemyCarType;
+    private LanePosition lanePosition;
+
 
     public EnemyCarController(EnemyCar gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
@@ -37,7 +38,14 @@ public class EnemyCarController extends SingleController implements Colliable {
         this.gameVector.dy = speed;
         this.enemyCarType = enemyCarType;
         CollisionPool.getInst().add(this);
+    }
 
+    public EnemyCarController(EnemyCar gameObject, GameDrawer gameDrawer, EnemyCarType enemyCarType, LanePosition lanePosition) {
+        super(gameObject, gameDrawer);
+        this.gameVector.dy = speed;
+        this.enemyCarType = enemyCarType;
+        this.lanePosition = lanePosition;
+        CollisionPool.getInst().add(this);
     }
 
     public EnemyCarType getEnemyCarType() {
@@ -66,7 +74,10 @@ public class EnemyCarController extends SingleController implements Colliable {
 
     @Override
     public void run() {
-        if (!PlayGameScene.pause) {
+        if ((!PlayGameScene.pause) &&
+                (PersonControllerManager.getInst().size() == 0 ||
+                        this.lanePosition != ((Person)PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane() ||
+                        (this.lanePosition == ((Person)PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane() && (this.gameObject.getY() <= (350 - EnemyCar.HEIGHT - 10) || this.gameObject.getY() >= (350 - EnemyCar.HEIGHT))))){
             super.run();
             count ++;
         }
@@ -119,57 +130,62 @@ public class EnemyCarController extends SingleController implements Colliable {
 
     //DuTQ: tạo ô tô địch theo loại ô tô và làn
     public static EnemyCarController create(EnemyCarType enemyCarType, LanePosition lanePosition) {
-        EnemyCar enemyCar = null;
-        switch (lanePosition) {
-            case LANE1:
-                enemyCar = new EnemyCar(GameConfig.LANE[0].x,
-                                        GameConfig.LANE[0].y,
-                                        EnemyCar.WIDTH,
-                                        EnemyCar.HEIGHT);
-                break;
-            case LANE2:
-                enemyCar = new EnemyCar(GameConfig.LANE[1].x,
-                                        GameConfig.LANE[1].y,
-                                        EnemyCar.WIDTH,
-                                        EnemyCar.HEIGHT);
-                break;
-            case LANE3:
-                enemyCar = new EnemyCar(GameConfig.LANE[2].x,
-                                        GameConfig.LANE[2].y,
-                                        EnemyCar.WIDTH,
-                                        EnemyCar.HEIGHT);
-                break;
-            case LANE4:
-                enemyCar = new EnemyCar(GameConfig.LANE[3].x,
-                                        GameConfig.LANE[3].y,
-                                        EnemyCar.WIDTH,
-                                        EnemyCar.HEIGHT);
-                break;
+        EnemyCarController enemyCarController = null;
+        if (PersonControllerManager.getInst().size() == 0 || lanePosition != ((Person)PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane()) {
+            EnemyCar enemyCar = null;
+            switch (lanePosition) {
+                case LANE1:
+                    enemyCar = new EnemyCar(GameConfig.LANE[0].x,
+                            GameConfig.LANE[0].y,
+                            EnemyCar.WIDTH,
+                            EnemyCar.HEIGHT);
+                    break;
+                case LANE2:
+                    enemyCar = new EnemyCar(GameConfig.LANE[1].x,
+                            GameConfig.LANE[1].y,
+                            EnemyCar.WIDTH,
+                            EnemyCar.HEIGHT);
+                    break;
+                case LANE3:
+                    enemyCar = new EnemyCar(GameConfig.LANE[2].x,
+                            GameConfig.LANE[2].y,
+                            EnemyCar.WIDTH,
+                            EnemyCar.HEIGHT);
+                    break;
+                case LANE4:
+                    enemyCar = new EnemyCar(GameConfig.LANE[3].x,
+                            GameConfig.LANE[3].y,
+                            EnemyCar.WIDTH,
+                            EnemyCar.HEIGHT);
+                    break;
+            }
+            ImageDrawer imageDrawer = null;
+            switch (enemyCarType) {
+                case BLUE:
+                    imageDrawer = new ImageDrawer("resources/blue_car.png");
+                    break;
+                case GREEN:
+                    imageDrawer = new ImageDrawer("resources/green_car.png");
+                    break;
+                case PINK:
+                    imageDrawer = new ImageDrawer("resources/pink_car.png");
+                    break;
+                case BLACK:
+                    imageDrawer = new ImageDrawer("resources/black_car.png");
+                    break;
+            }
+            String[] images = new String[]{"resources/explosion/Explosion1.png",
+                    "resources/explosion/Explosion2.png",
+                    "resources/explosion/Explosion3.png",
+                    "resources/explosion/Explosion4.png",
+                    "resources/explosion/Explosion5.png",
+                    "resources/explosion/Explosion6.png"};
+            DeadAnimationDrawer deadAnimationDrawer = new DeadAnimationDrawer(images);
+            EnemyCarDrawer enemyCarDrawer = new EnemyCarDrawer(imageDrawer, deadAnimationDrawer);
+            enemyCarController = new EnemyCarController(enemyCar, enemyCarDrawer, enemyCarType, lanePosition);
+
         }
-        ImageDrawer imageDrawer = null;
-        switch (enemyCarType) {
-            case BLUE:
-                imageDrawer = new ImageDrawer("resources/blue_car.png");
-                break;
-            case GREEN:
-                imageDrawer = new ImageDrawer("resources/green_car.png");
-                break;
-            case PINK:
-                imageDrawer = new ImageDrawer("resources/pink_car.png");
-                break;
-            case BLACK:
-                imageDrawer = new ImageDrawer("resources/black_car.png");
-                break;
-        }
-        String[] images = new String[] {"resources/explosion/Explosion1.png",
-                "resources/explosion/Explosion2.png",
-                "resources/explosion/Explosion3.png",
-                "resources/explosion/Explosion4.png",
-                "resources/explosion/Explosion5.png",
-                "resources/explosion/Explosion6.png"};
-        DeadAnimationDrawer deadAnimationDrawer = new DeadAnimationDrawer(images);
-        EnemyCarDrawer enemyCarDrawer = new EnemyCarDrawer(imageDrawer, deadAnimationDrawer);;
-        EnemyCarController enemyCarController = new EnemyCarController(enemyCar, enemyCarDrawer, enemyCarType);
         return enemyCarController;
     }
+
 }

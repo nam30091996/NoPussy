@@ -27,7 +27,6 @@ public class CoinController extends SingleController implements Colliable {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
         if (this.gameObject.isAlive()) {
             super.paint(g);
         }

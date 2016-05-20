@@ -7,6 +7,7 @@ import controller.CoinControllers.CoinController;
 import controller.CoinControllers.CoinType;
 import controller.EnemyCarControllers.EnemyCarController;
 import controller.GiftControllers.GiftController;
+import controller.PersonController.PersonController;
 import controller.StoneControllers.StoneController;
 import gamescenes.PlayGameScene;
 import model.*;
@@ -155,6 +156,12 @@ public class CarPlayerController extends SingleController implements Colliable {
                     break;
             }
             this.ableToShoot = true;
+        }  else if(c instanceof PersonController) {
+            GameUtils.playSound("resources/aaa.wav", false);
+            ((CarPlayer)gameObject).decreaseHP(2);
+            if(((CarPlayer)gameObject).getHp() <= 0) {
+                this.gameObject.setAlive(false);
+            }
         }
     }
 }

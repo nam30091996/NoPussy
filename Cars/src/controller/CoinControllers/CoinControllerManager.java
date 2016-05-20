@@ -33,13 +33,6 @@ public class CoinControllerManager extends ControllerManager {
             CoinController coinController = CoinController.create(CoinType.RED, x, y);
             this.singleControllerVector.add(coinController);
         }
-//        if(GameConfig.getInst().durationInSeconds(count) >= 10) {
-//            count = 0;
-//            int x = (int) (Math.random() * 300);
-//            int y = (int) (Math.random() * 500);
-//            CoinController coinController = CoinController.create(CoinType.ULTRA, x, y);
-//            this.singleControllerVector.add(coinController);
-//        }
     }
 
     private static CoinControllerManager inst;
