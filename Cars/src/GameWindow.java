@@ -4,10 +4,7 @@ import model.HighScore;
 import util.GameUtils;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,7 +16,6 @@ import java.util.Scanner;
  */
 public class GameWindow extends Frame implements Runnable,GameSceneListener {
 
-    Image backgroundImage;
     Thread thread;
     Image backbufferImage;
     GameConfig gameConfig;
@@ -108,6 +104,34 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
             }
         });
 
+
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                gameScene.onMouseClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
         thread = new Thread(this);
         thread.start();
     }
@@ -150,6 +174,10 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
                 break;
             case GAMEOVER:
                 gameScene = new GameOverScene();
+                gameScene.setGameSceneListener(this);
+                break;
+            case GUIDE:
+                gameScene = new GuideScene();
                 gameScene.setGameSceneListener(this);
                 break;
         }

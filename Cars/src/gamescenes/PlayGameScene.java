@@ -3,7 +3,7 @@ package gamescenes;
 import controller.*;
 import controller.CarPlayerControllers.CarPlayerController;
 import controller.CarPlayerControllers.CarPlayerDirection;
-import controller.CarPlayerControllers.CarPlayerHPControllerManager;
+import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.CoinControllers.CoinControllerManager;
 import controller.EnemyCarControllers.EnemyCarController;
 import controller.EnemyCarControllers.EnemyCarControllerManager;
@@ -16,6 +16,7 @@ import model.GameConfig;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
@@ -82,7 +83,7 @@ public class PlayGameScene extends GameScene {
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(backgroundImage, 0, 0, gameConfig.getScreenWidth(), gameConfig.getScreenHeight(), null);
+        g.drawImage(backgroundImage, 0, 20, gameConfig.getScreenWidth(), gameConfig.getScreenHeight(), null);
         for (Controller controller : controllerVect) {
             try {
                 controller.paint(g);
@@ -154,6 +155,11 @@ public class PlayGameScene extends GameScene {
                 break;
         }
         carPlayerController.move(carPlayerDirection);
+    }
+
+    @Override
+    public void onMouseClicked(MouseEvent e) {
+
     }
 
     public void reset() {

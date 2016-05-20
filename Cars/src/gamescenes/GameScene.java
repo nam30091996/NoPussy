@@ -2,6 +2,7 @@ package gamescenes;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 /**
  * Created by qhuydtvt on 5/13/2016.
@@ -30,4 +31,6 @@ public abstract class GameScene {
     public abstract void onKeyPressed(KeyEvent e);
 
     public abstract void onKeyReleased(KeyEvent e);
+
+    public abstract void onMouseClicked(MouseEvent e);
 }

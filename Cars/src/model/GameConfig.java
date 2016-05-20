@@ -13,7 +13,7 @@ public class GameConfig {
     public static final Point LANE_4 = new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 7 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT);
 
     public static final int DEFAULT_SCREEN_WIDTH = 420;
-    public static final int DEFAULT_SCREEN_HEIGHT = 700;
+    public static final int DEFAULT_SCREEN_HEIGHT = 720;
     public static final int DEFAULT_THREAD_DELAY = 17;
 
     private int screenWidth;

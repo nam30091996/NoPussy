@@ -9,6 +9,7 @@ import util.GameUtils;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -73,6 +74,11 @@ public class GameOverScene extends GameScene {
 
     @Override
     public void onKeyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void onMouseClicked(MouseEvent e) {
 
     }
 

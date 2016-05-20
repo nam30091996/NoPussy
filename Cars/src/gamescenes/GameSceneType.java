@@ -6,5 +6,6 @@ package gamescenes;
 public enum GameSceneType {
     MENU,
     PLAY,
-    GAMEOVER
+    GAMEOVER,
+    GUIDE
 }
