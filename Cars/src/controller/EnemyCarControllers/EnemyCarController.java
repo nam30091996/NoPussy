@@ -40,6 +40,14 @@ public class EnemyCarController extends SingleController implements Colliable {
 
     }
 
+    public EnemyCarType getEnemyCarType() {
+        return enemyCarType;
+    }
+
+    public void setEnemyCarType(EnemyCarType enemyCarType) {
+        this.enemyCarType = enemyCarType;
+    }
+
     public static void increaseSpeed() {
         speed ++;
     }
@@ -65,10 +73,10 @@ public class EnemyCarController extends SingleController implements Colliable {
         if(GameConfig.getInst().durationInSeconds(count) >= 2 && this.enemyCarType == EnemyCarType.BLACK) {
             count = 0;
             int lane;
-            //do {
+            do {
                 lane = (int) (Math.random() * 4);
                 this.getGameObject().setX(GameConfig.LANE[lane].x);
-            //} while (this.check() == false);
+            } while (this.check() == false);
 
         }
         if(((EnemyCar)this.getGameObject()).getLifeState() == LifeState.DYING) {
@@ -85,7 +93,7 @@ public class EnemyCarController extends SingleController implements Colliable {
 
     private boolean check() {
         for(SingleController enemyCarController : EnemyCarControllerManager.getInst().getSingleControllerVector()) {
-            if(this.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())) return false;
+            if(((EnemyCarController)enemyCarController).getEnemyCarType() != EnemyCarType.BLACK && this.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())) return false;
         }
         return true;
     }
