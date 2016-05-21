@@ -25,13 +25,15 @@ public class GiftControllerManager extends ControllerManager {
         if(!PlayGameScene.pause) count++;
         if(GameConfig.getInst().durationInSeconds(count) >= TIME && this.singleControllerVector.size() == 0) {
             this.count = 0;
-            int x = (int)(Math.random() * 3) ;
-            if(x % 3 == 0) {
+            int x = (int)(Math.random() * 4) ;
+            if(x % 4 == 0) {
                 this.singleControllerVector.add(GiftController.create(GiftType.SHOOT,(int)(Math.random()*(GameConfig.DEFAULT_SCREEN_WIDTH - Gift.WITDH)),0));
-            } else if(x % 3 == 1) {
+            } else if(x % 4 == 1) {
                 this.singleControllerVector.add(GiftController.create(GiftType.SHIELD,(int)(Math.random()*(GameConfig.DEFAULT_SCREEN_WIDTH - Gift.WITDH)),0));
-            } else if(x % 3 == 2) {
+            } else if(x % 4 == 2) {
                 this.singleControllerVector.add(GiftController.create(GiftType.HEART,(int)(Math.random()*(GameConfig.DEFAULT_SCREEN_WIDTH - Gift.WITDH)),0));
+            } else if(x % 4 == 3) {
+                this.singleControllerVector.add(GiftController.create(GiftType.FLY, (int) (Math.random() * (GameConfig.DEFAULT_SCREEN_WIDTH - Gift.WITDH)), 0));
             }
         }
     }

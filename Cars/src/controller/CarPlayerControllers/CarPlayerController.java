@@ -33,6 +33,7 @@ public class CarPlayerController extends SingleController implements Colliable {
 
     private boolean ableToShoot = false;
     private boolean shield = false;
+    private static boolean fly = false;
     private BulletControllerManager bulletControllerManager;
     private static final int MAX_BULLET_COUNT = 1;
     private int count_gift = 0;
@@ -42,6 +43,10 @@ public class CarPlayerController extends SingleController implements Colliable {
         super(gameObject, gameDrawer);
         bulletControllerManager = new BulletControllerManager();
         CollisionPool.getInst().add(this);
+    }
+
+    public static boolean isFly() {
+        return fly;
     }
 
     public void move(CarPlayerDirection carPlayerDirection) {
@@ -97,7 +102,8 @@ public class CarPlayerController extends SingleController implements Colliable {
             ImageDrawer carPlayerDrawer = new ImageDrawer("resources/white_car.png");
             AnimationDrawer carPlayerShootDrawer = new AnimationDrawer(new String[]{"resources/white_car.png", "resources/white_car_shoot.png"});
             AnimationDrawer carPlayerShieldDrawer = new AnimationDrawer(new String[]{"resources/shield/white_car.png", "resources/shield/blue_car.png", "resources/shield/green_car.png", "resources/shield/pink_car.png"});
-            carPlayerController = new CarPlayerController(carPlayer, new CarPlayerDrawer(carPlayerDrawer, carPlayerShieldDrawer, carPlayerShootDrawer ));
+            ImageDrawer carPlayerFlyDrawer = new ImageDrawer("resources/fly_car.png");
+            carPlayerController = new CarPlayerController(carPlayer, new CarPlayerDrawer(carPlayerDrawer, carPlayerShieldDrawer, carPlayerShootDrawer, carPlayerFlyDrawer));
         }
         return carPlayerController;
     }
@@ -127,6 +133,7 @@ public class CarPlayerController extends SingleController implements Colliable {
                 count_gift = 0;
                 this.ableToShoot = false;
                 this.shield = false;
+                this.fly = false;
                 ((CarPlayer)this.gameObject).setCarPlayerStatus(CarPlayerStatus.NORMAL);
             }
             if(GameConfig.getInst().isInScreen(rectangle)) {
@@ -146,7 +153,7 @@ public class CarPlayerController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable c) {
-        if (c instanceof EnemyCarController) {
+        if (c instanceof EnemyCarController && !this.fly) {
             if(((EnemyCarController)c).getEnemyCarType() == EnemyCarType.BATTERY) {
                 GameUtils.playSound("resources/cheering.wav", false);
                 ((CarPlayer)this.gameObject).setBattery(5);
@@ -160,7 +167,7 @@ public class CarPlayerController extends SingleController implements Colliable {
                     this.gameObject.setAlive(false);
                 }
             }
-        } else if(c instanceof StoneController) {
+        } else if(c instanceof StoneController && !this.fly) {
             GameUtils.playSound("resources/die_sound.wav", false);
             if (!this.shield) {
                 ((CarPlayer) gameObject).decreaseHP();
@@ -168,7 +175,7 @@ public class CarPlayerController extends SingleController implements Colliable {
             if (((CarPlayer) gameObject).getHp() <= 0) {
                 this.gameObject.setAlive(false);
             }
-        } else if(c instanceof CoinController) {
+        } else if(c instanceof CoinController && !this.fly) {
             GameUtils.playSound("resources/get_score_sound.wav", false);
             if(((Coin)c.getGameObject()).getCoinType() == CoinType.RED) EnemyCarController.increaseSpeed(-1);
         } else if(c instanceof GiftController) {
@@ -176,26 +183,29 @@ public class CarPlayerController extends SingleController implements Colliable {
             switch (((Gift)c.getGameObject()).getGiftType()) {
                 case SHOOT:
                     this.ableToShoot = true;
-                    ((CarPlayer)this.gameObject).setCarPlayerStatus(CarPlayerStatus.SHOOT);
+                    ((CarPlayer) this.gameObject).setCarPlayerStatus(CarPlayerStatus.SHOOT);
                     break;
                 case SHIELD:
                     this.shield = true;
-                    ((CarPlayer)this.gameObject).setCarPlayerStatus(CarPlayerStatus.SHIELD);
+                    ((CarPlayer) this.gameObject).setCarPlayerStatus(CarPlayerStatus.SHIELD);
                     break;
                 case HEART:
-                    if(((GameObjectWithHP)this.getGameObject()).getHp() < CarPlayer.HP_MAX) {
+                    if (((GameObjectWithHP) this.getGameObject()).getHp() < CarPlayer.HP_MAX) {
                         ((GameObjectWithHP) this.getGameObject()).increaseHP();
                     }
                     break;
+                case FLY:
+                    this.fly = true;
+                    ((CarPlayer) this.gameObject).setCarPlayerStatus(CarPlayerStatus.FLY);
+                    break;
             }
-            this.ableToShoot = true;
-        }  else if(c instanceof PersonController) {
+        }  else if(c instanceof PersonController && !this.fly) {
             GameUtils.playSound("resources/aaa.wav", false);
             ((CarPlayer)gameObject).decreaseHP(2);
             if(((CarPlayer)gameObject).getHp() <= 0) {
                 this.gameObject.setAlive(false);
             }
-        } else if(c instanceof PikachuController) {
+        } else if(c instanceof PikachuController && !this.fly) {
             GameUtils.playSound("resources/pikachu.wav", false);
             ((CarPlayer) gameObject).decreaseHP();
             if(((CarPlayer)gameObject).getHp() <= 0) {

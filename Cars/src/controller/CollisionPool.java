@@ -1,5 +1,7 @@
 package controller;
 
+import controller.CarPlayerControllers.CarPlayerController;
+
 import java.awt.*;
 import java.util.Iterator;
 import java.util.Vector;
@@ -56,6 +58,18 @@ public class CollisionPool {
         while(iterator.hasNext()) {
             Colliable c = iterator.next();
                 iterator.remove();
+        }
+        System.out.println(colliableVector.size());
+    }
+
+    public void reset1() {
+        Iterator<Colliable> iterator = colliableVector.iterator();
+        while(iterator.hasNext()) {
+            Colliable c = iterator.next();
+            if(c instanceof CarPlayerController) {
+
+            }
+            else iterator.remove();
         }
         System.out.println(colliableVector.size());
     }

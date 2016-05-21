@@ -8,5 +8,7 @@ public enum GameSceneType {
     PLAY,
     GAMEOVER,
     GUIDE,
-    ABOUT
+    ABOUT,
+    PLAY1,
+    PLAY2
 }

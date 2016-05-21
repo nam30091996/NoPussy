@@ -57,7 +57,7 @@ public class PoliceCarController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable c) {
-        if(c instanceof CarPlayerController) {
+        if(c instanceof CarPlayerController && !CarPlayerController.isFly()) {
             c.getGameObject().setAlive(false);
         }
     }
@@ -71,5 +71,7 @@ public class PoliceCarController extends SingleController implements Colliable {
         return policeCarController;
     }
 
-    //public static setNull
+    public static void setNull() {
+        policeCarController = null;
+    }
 }

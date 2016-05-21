@@ -41,7 +41,7 @@ public class CoinController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable c) {
-        if(c instanceof CarPlayerController) {
+        if(c instanceof CarPlayerController && !CarPlayerController.isFly()) {
             this.gameObject.setAlive(false);
             ((CarPlayer)c.getGameObject()).increasePoint();
             if(CarPlayer.getPoint() % CoinControllerManager.getInst().INCREASE_SPEED_TIME == 0 && CarPlayer.getPoint() != 0) {

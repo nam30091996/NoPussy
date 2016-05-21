@@ -6,5 +6,6 @@ package model;
 public enum CarPlayerStatus {
     NORMAL,
     SHIELD,
-    SHOOT
+    SHOOT,
+    FLY
 }

@@ -6,5 +6,6 @@ package controller.GiftControllers;
 public enum  GiftType {
     SHOOT,
     SHIELD,
-    HEART
+    HEART,
+    FLY
 }

@@ -1,19 +1,15 @@
 package gamescenes;
 
-import controller.*;
 import controller.CarPlayerControllers.CarPlayerController;
 import controller.CarPlayerControllers.CarPlayerDirection;
-import controller.PersonController.PersonController;
-import controller.PersonController.PersonControllerManager;
-import controller.PersonController.PikachuControllerManager;
-import controller.PointControllers.BatteryController;
-import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.CoinControllers.CoinControllerManager;
+import controller.CollisionPool;
+import controller.Controller;
 import controller.EnemyCarControllers.EnemyCarController;
 import controller.EnemyCarControllers.EnemyCarControllerManager;
-import controller.GiftControllers.GiftControllerManager;
+import controller.PointControllers.BatteryController;
+import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.PointControllers.GamePointControllerManager;
-import controller.PointControllers.HighScoreManager;
 import controller.StoneControllers.StoneControllerManager;
 import model.CarPlayer;
 import model.GameConfig;
@@ -22,13 +18,14 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
- * Created by qhuydtvt on 5/13/2016.
+ * Created by MyComputer on 5/21/2016.
  */
-public class PlayGameScene extends GameScene {
+public class PlayGameScene1 extends GameScene {
 
     private CarPlayerController carPlayerController;
     private Image backgroundImage;
@@ -37,10 +34,10 @@ public class PlayGameScene extends GameScene {
     private int count = 0;
     public static boolean pause = false;
 
-    public PlayGameScene() {
+    public PlayGameScene1() {
 
         this.gameConfig = GameConfig.getInst();
-            controllerVect = new Vector<Controller>();
+        controllerVect = new Vector<Controller>();
 
 
         controllerVect.add(CoinControllerManager.getInst());
@@ -48,18 +45,18 @@ public class PlayGameScene extends GameScene {
         controllerVect.add(EnemyCarControllerManager.getInst());
         controllerVect.add(GamePointControllerManager.getInst());
         controllerVect.add(CarPlayerHPControllerManager.getInst());
-        controllerVect.add(GiftControllerManager.getInst());
-        controllerVect.add(PersonControllerManager.getInst());
-        controllerVect.add(PoliceCarController.getPoliceCarController());
-        controllerVect.add(PikachuControllerManager.getInst());
+//        controllerVect.add(GiftControllerManager.getInst());
+//        controllerVect.add(PersonControllerManager.getInst());
+//        controllerVect.add(PoliceCarController.getPoliceCarController());
+//        controllerVect.add(PikachuControllerManager.getInst());
         controllerVect.add(BatteryController.getInst());
         controllerVect.add(CarPlayerController.getCarPlayerController());
 
-            try {
-                this.backgroundImage = ImageIO.read(new File("resources/background.png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            this.backgroundImage = ImageIO.read(new File("resources/background1.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.carPlayerController = CarPlayerController.getCarPlayerController();
     }
 
@@ -77,13 +74,14 @@ public class PlayGameScene extends GameScene {
         }
 
         GamePointControllerManager.getInst().updatePoint(((CarPlayer) carPlayerController.getGameObject()).getPoint());
+        if(((CarPlayer) carPlayerController.getGameObject()).getPoint() >= 50) {
+            reset();
+            changeGameScene(GameSceneType.PLAY2);
+        }
         CarPlayerHPControllerManager.getInst().updateHP(((CarPlayer) carPlayerController.getGameObject()).getHp());
         if(!carPlayerController.getGameObject().isAlive()) {
             reset();
             changeGameScene(GameSceneType.GAMEOVER);
-        }
-        if(((CarPlayer) carPlayerController.getGameObject()).getPoint() == 10) {
-
         }
 
     }
@@ -122,10 +120,13 @@ public class PlayGameScene extends GameScene {
                 break;
             case KeyEvent.VK_P:
                 this.pause = true;
-
                 break;
             case KeyEvent.VK_R:
                 this.pause = false;
+                break;
+            case KeyEvent.VK_U:
+                reset();
+                changeGameScene(GameSceneType.PLAY2);
                 break;
         }
 
@@ -158,13 +159,13 @@ public class PlayGameScene extends GameScene {
         CoinControllerManager.setNull();
         EnemyCarControllerManager.setNull();
         StoneControllerManager.setNull();
-        CarPlayerController.setNull();
-        GiftControllerManager.setNull();
-        PersonControllerManager.setNull();
-        PikachuControllerManager.setNull();
-        PoliceCarController.setNull();
-        EnemyCarController.setSpeed(EnemyCarController.SPEED);
-        CollisionPool.getInst().reset();
+//        CarPlayerController.setNull();
+//        GiftControllerManager.setNull();
+//        PersonControllerManager.setNull();
+//        PikachuControllerManager.setNull();
+//        PoliceCarController.setNull();
+//        EnemyCarController.setSpeed(EnemyCarController.SPEED);
+        CollisionPool.getInst().reset1();
         this.carPlayerController = CarPlayerController.getCarPlayerController();
     }
 }

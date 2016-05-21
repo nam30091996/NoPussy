@@ -64,7 +64,7 @@ public class MenuGameScene extends GameScene {
         int x = e.getX();
         int y = e.getY();
         if(x >= DEFAULT_X[0] && x - DEFAULT_X[0] <= WIDTH_BUTTON && y >= DEFAULT_Y[0] && y - DEFAULT_Y[0] <= HEIGHT_BUTTON) {
-            changeGameScene(GameSceneType.PLAY);
+            changeGameScene(GameSceneType.PLAY1);
         }
         else if(x >= DEFAULT_X[0] && x - DEFAULT_X[0] <= WIDTH_BUTTON && y >= DEFAULT_Y[1] && y - DEFAULT_Y[1] <= HEIGHT_BUTTON) {
             changeGameScene(GameSceneType.GUIDE);

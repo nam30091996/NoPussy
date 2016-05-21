@@ -47,6 +47,9 @@ public class GiftController extends SingleController implements Colliable {
             case HEART:
                 imageDrawer = new ImageDrawer("resources/heart.png");
                 break;
+            case FLY:
+                imageDrawer = new ImageDrawer("resources/wing.png");
+                break;
         }
         GiftController giftController = new GiftController(gift, imageDrawer);
         return giftController;

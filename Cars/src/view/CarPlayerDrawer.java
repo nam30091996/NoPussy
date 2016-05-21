@@ -12,11 +12,13 @@ public class CarPlayerDrawer implements GameDrawer{
     private GameDrawer normal;
     private GameDrawer shield;
     private GameDrawer shoot;
+    private GameDrawer fly;
 
-    public CarPlayerDrawer(GameDrawer normal, GameDrawer shield, GameDrawer shoot) {
+    public CarPlayerDrawer(GameDrawer normal, GameDrawer shield, GameDrawer shoot, GameDrawer fly) {
         this.normal = normal;
         this.shield = shield;
         this.shoot = shoot;
+        this.fly = fly;
     }
 
 
@@ -32,6 +34,9 @@ public class CarPlayerDrawer implements GameDrawer{
                 break;
             case SHOOT:
                 shoot.paint(gameObject, g);
+                break;
+            case FLY:
+                fly.paint(gameObject, g);
                 break;
         }
     }

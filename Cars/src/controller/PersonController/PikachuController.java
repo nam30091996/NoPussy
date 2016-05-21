@@ -60,7 +60,7 @@ public class PikachuController extends SingleController implements Colliable{
     }
     @Override
     public void onCollide(Colliable c) {
-        if(c instanceof CarPlayerController) {
+        if(c instanceof CarPlayerController && !CarPlayerController.isFly()) {
             this.getGameObject().setAlive(false);
         }
     }
