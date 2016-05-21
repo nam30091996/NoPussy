@@ -5,6 +5,7 @@ import controller.CarPlayerControllers.CarPlayerController;
 import controller.CarPlayerControllers.CarPlayerDirection;
 import controller.PersonController.PersonController;
 import controller.PersonController.PersonControllerManager;
+import controller.PersonController.PikachuControllerManager;
 import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.CoinControllers.CoinControllerManager;
 import controller.EnemyCarControllers.EnemyCarController;
@@ -49,6 +50,7 @@ public class PlayGameScene extends GameScene {
             controllerVect.add(GiftControllerManager.getInst());
             controllerVect.add(PersonControllerManager.getInst());
             controllerVect.add(PoliceCarController.getPoliceCarController());
+            controllerVect.add(PikachuControllerManager.getInst());
 
             try {
                 this.backgroundImage = ImageIO.read(new File("resources/background.png"));
@@ -156,6 +158,7 @@ public class PlayGameScene extends GameScene {
         CarPlayerController.setNull();
         GiftControllerManager.setNull();
         PersonControllerManager.setNull();
+        PikachuControllerManager.setNull();
         EnemyCarController.setSpeed(EnemyCarController.SPEED);
         CollisionPool.getInst().reset();
         this.carPlayerController = CarPlayerController.getCarPlayerController();
@@ -171,6 +174,7 @@ public class PlayGameScene extends GameScene {
         EnemyCarController.setSpeed(EnemyCarController.SPEED);
         CollisionPool.getInst().reset();
         GamePointControllerManager.setNull();
+        PikachuControllerManager.setNull();
         CarPlayer.setPoint(0);
         this.carPlayerController = CarPlayerController.getCarPlayerController();
     }

@@ -32,7 +32,7 @@ public class PersonController extends SingleController implements Colliable{
     }
 
     public static PersonController create() {
-        Person person = new Person(-51, 350, 50, 50);
+        Person person = new Person(-Person.DEFAULT_X, Person.DEFAULT_Y, Person.WIDTH, Person.HEIGHT);
         ImageDrawer imageDrawer = new ImageDrawer("resources/dung.png");
         PersonController personController = new PersonController(person, imageDrawer);
         return personController;

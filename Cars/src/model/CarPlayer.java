@@ -6,8 +6,8 @@ package model;
 public class CarPlayer extends GameObjectWithHP {
 
     private static int point = 0;
-    private static int HP_DEFAULT = 5;
-    public static final int HP_MAX = 10;
+    private static int HP_DEFAULT = 10;
+    public static final int HP_MAX = 100;
 
     private int hp = HP_DEFAULT;
     private CarPlayerStatus carPlayerStatus;

@@ -8,6 +8,7 @@ import controller.CoinControllers.CoinType;
 import controller.EnemyCarControllers.EnemyCarController;
 import controller.GiftControllers.GiftController;
 import controller.PersonController.PersonController;
+import controller.PersonController.PikachuController;
 import controller.StoneControllers.StoneController;
 import gamescenes.PlayGameScene;
 import model.*;
@@ -162,6 +163,8 @@ public class CarPlayerController extends SingleController implements Colliable {
             if(((CarPlayer)gameObject).getHp() <= 0) {
                 this.gameObject.setAlive(false);
             }
+        } else if(c instanceof PikachuController) {
+            ((CarPlayer) gameObject).decreaseHP();
         }
     }
 }
