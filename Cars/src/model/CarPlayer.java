@@ -10,6 +10,7 @@ public class CarPlayer extends GameObjectWithHP {
     public static final int HP_MAX = 100;
 
     private int hp = HP_DEFAULT;
+    private int battery = 5;
     private CarPlayerStatus carPlayerStatus;
 
     public CarPlayer(int x, int y, int width, int height) {
@@ -43,5 +44,17 @@ public class CarPlayer extends GameObjectWithHP {
 
     public static void setPoint(int point) {
         CarPlayer.point = point;
+    }
+
+    public int getBattery() {
+        return battery;
+    }
+
+    public void setBattery(int battery) {
+        this.battery = battery;
+    }
+
+    public void decreaseBattery() {
+        this.battery -= 1;
     }
 }

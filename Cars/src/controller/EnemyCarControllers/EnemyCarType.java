@@ -7,7 +7,8 @@ public enum EnemyCarType {
     BLUE,
     GREEN,
     PINK,
-    BLACK;
+    BLACK,
+    BATTERY;
 
     public static EnemyCarType getRandom() {
         return values()[(int) (Math.random() * values().length)];

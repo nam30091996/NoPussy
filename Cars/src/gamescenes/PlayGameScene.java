@@ -6,6 +6,7 @@ import controller.CarPlayerControllers.CarPlayerDirection;
 import controller.PersonController.PersonController;
 import controller.PersonController.PersonControllerManager;
 import controller.PersonController.PikachuControllerManager;
+import controller.PointControllers.BatteryController;
 import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.CoinControllers.CoinControllerManager;
 import controller.EnemyCarControllers.EnemyCarController;
@@ -41,16 +42,17 @@ public class PlayGameScene extends GameScene {
         this.gameConfig = GameConfig.getInst();
             controllerVect = new Vector<Controller>();
 
-            controllerVect.add(CarPlayerController.getCarPlayerController());
-            controllerVect.add(CoinControllerManager.getInst());
-            controllerVect.add(StoneControllerManager.getInst());
-            controllerVect.add(EnemyCarControllerManager.getInst());
-            controllerVect.add(GamePointControllerManager.getInst());
-            controllerVect.add(CarPlayerHPControllerManager.getInst());
-            controllerVect.add(GiftControllerManager.getInst());
-            controllerVect.add(PersonControllerManager.getInst());
-            controllerVect.add(PoliceCarController.getPoliceCarController());
-            controllerVect.add(PikachuControllerManager.getInst());
+        controllerVect.add(CarPlayerController.getCarPlayerController());
+        controllerVect.add(CoinControllerManager.getInst());
+        controllerVect.add(StoneControllerManager.getInst());
+        controllerVect.add(EnemyCarControllerManager.getInst());
+        controllerVect.add(GamePointControllerManager.getInst());
+        controllerVect.add(CarPlayerHPControllerManager.getInst());
+        controllerVect.add(GiftControllerManager.getInst());
+        controllerVect.add(PersonControllerManager.getInst());
+        controllerVect.add(PoliceCarController.getPoliceCarController());
+        controllerVect.add(PikachuControllerManager.getInst());
+        controllerVect.add(BatteryController.getInst());
 
             try {
                 this.backgroundImage = ImageIO.read(new File("resources/background.png"));

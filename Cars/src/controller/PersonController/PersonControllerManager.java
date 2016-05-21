@@ -16,7 +16,7 @@ public class PersonControllerManager extends ControllerManager {
             super.run();
             count ++;
         }
-        if(GameConfig.getInst().durationInSeconds(count) >= 5) {
+        if(GameConfig.getInst().durationInSeconds(count) >= 15) {
             count = 0;
             this.singleControllerVector.add(PersonController.create());
         }

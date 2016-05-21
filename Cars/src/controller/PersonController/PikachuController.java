@@ -54,7 +54,7 @@ public class PikachuController extends SingleController implements Colliable{
 
     public static PikachuController create() {
         Pikachu pikachu = new Pikachu(Pikachu.DEFAULT_X, Pikachu.DEFAULT_Y, Pikachu.WIDTH, Pikachu.HEIGHT);
-        ImageDrawer imageDrawer = new ImageDrawer("resources/dung.png");
+        ImageDrawer imageDrawer = new ImageDrawer("resources/pikachu.png");
         PikachuController pikachuController = new PikachuController(pikachu, imageDrawer);
         return pikachuController;
     }

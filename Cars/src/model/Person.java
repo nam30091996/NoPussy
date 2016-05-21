@@ -8,7 +8,7 @@ import controller.EnemyCarControllers.LanePosition;
 public class Person extends GameObject {
     private LanePosition lane;
 
-    public static final int DEFAULT_X = -51;
+    public static final int DEFAULT_X = 51;
     public static final int DEFAULT_Y = 350;
     public static final int WIDTH = 50;
     public static final int HEIGHT = 50;

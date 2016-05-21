@@ -16,7 +16,7 @@ public class PikachuControllerManager extends ControllerManager {
             super.run();
             count ++;
         }
-        if(GameConfig.getInst().durationInSeconds(count) >= 5) {
+        if(GameConfig.getInst().durationInSeconds(count) >= 10) {
             count = 0;
             this.singleControllerVector.add(PikachuController.create());
         }

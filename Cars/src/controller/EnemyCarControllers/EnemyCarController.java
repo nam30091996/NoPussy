@@ -72,6 +72,8 @@ public class EnemyCarController extends SingleController implements Colliable {
         EnemyCarController.speed = speed;
     }
 
+
+
     @Override
     public void run() {
         if ((!PlayGameScene.pause) &&
@@ -172,6 +174,9 @@ public class EnemyCarController extends SingleController implements Colliable {
                     break;
                 case BLACK:
                     imageDrawer = new ImageDrawer("resources/black_car.png");
+                    break;
+                case BATTERY:
+                    imageDrawer = new ImageDrawer("resources/battery.png");
                     break;
             }
             String[] images = new String[]{"resources/explosion/Explosion1.png",

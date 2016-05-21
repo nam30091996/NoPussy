@@ -2,10 +2,7 @@ package controller;
 
 import controller.CarPlayerControllers.CarPlayerController;
 import gamescenes.PlayGameScene;
-import model.CarPlayer;
-import model.GameObject;
-import model.GameVector;
-import model.PoliceCar;
+import model.*;
 import view.GameDrawer;
 import view.ImageDrawer;
 
@@ -15,6 +12,8 @@ import view.ImageDrawer;
 public class PoliceCarController extends SingleController implements Colliable {
 
     private static PoliceCarController policeCarController = null;
+    private int time = 0;
+
     public PoliceCarController(GameObject gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         CollisionPool.getInst().add(this);
@@ -28,24 +27,32 @@ public class PoliceCarController extends SingleController implements Colliable {
     @Override
     public void run() {
         if(!PlayGameScene.pause) {
-            GameVector gameVector = CarPlayerController.getCarPlayerController().gameVector;
-            GameObject gameObject = CarPlayerController.getCarPlayerController().gameObject;
-            if(gameVector.dx > 0) this.gameVector.dx = 1;
-            else if(gameVector.dx < 0) this.gameVector.dx = -1;
-            else {
-                if(gameObject.getX() > this.gameObject.getX()) this.gameVector.dx = 1;
-                else if(gameObject.getX() < this.gameObject.getX()) this.gameVector.dx = -1;
+            //time ++;
+            //if(GameConfig.getInst().durationInSeconds(time) >= 10) {
+                GameVector gameVector = CarPlayerController.getCarPlayerController().gameVector;
+                GameObject gameObject = CarPlayerController.getCarPlayerController().gameObject;
+                if (gameVector.dx > 0) this.gameVector.dx = 1;
+                else if (gameVector.dx < 0) this.gameVector.dx = -1;
+                else {
+                    if (gameObject.getX() > this.gameObject.getX()) this.gameVector.dx = 1;
+                    else if (gameObject.getX() < this.gameObject.getX()) this.gameVector.dx = -1;
+                }
+                if (gameVector.dy > 0) this.gameVector.dy = 1;
+                else if (gameVector.dy < 0) this.gameVector.dy = -1;
+                else {
+                    if (gameObject.getY() > this.gameObject.getY()) this.gameVector.dy = 1;
+                    else if (gameObject.getY() < this.gameObject.getY()) this.gameVector.dy = -1;
+                }
+                if (this.gameObject.getY() <= 670) this.gameVector.dy = 1;
+                else if (this.gameObject.getY() >= 700) this.gameVector.dy = -1;
+
+              //  if(GameConfig.getInst().durationInSeconds(time) >= 15) {
+                //    this.gameObject.setY(720);
+                  //  time = 0;
+                //}
             }
-            if(gameVector.dy > 0) this.gameVector.dy = 1;
-            else if(gameVector.dy < 0) this.gameVector.dy = -1;
-            else {
-                if(gameObject.getY() > this.gameObject.getY()) this.gameVector.dy = 1;
-                else if(gameObject.getY() < this.gameObject.getY()) this.gameVector.dy = -1;
-            }
-            if(this.gameObject.getY() <= 670) this.gameVector.dy = 1;
-            else if(this.gameObject.getY() >= 700) this.gameVector.dy = -1;
             super.run();
-        }
+        //}
     }
 
     @Override
