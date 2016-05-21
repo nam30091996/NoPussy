@@ -3,6 +3,7 @@ package controller;
 import controller.CarPlayerControllers.CarPlayerController;
 import gamescenes.PlayGameScene;
 import model.*;
+import util.GameUtils;
 import view.GameDrawer;
 import view.ImageDrawer;
 
@@ -27,37 +28,34 @@ public class PoliceCarController extends SingleController implements Colliable {
     @Override
     public void run() {
         if(!PlayGameScene.pause) {
-            //time ++;
-            //if(GameConfig.getInst().durationInSeconds(time) >= 10) {
-                GameVector gameVector = CarPlayerController.getCarPlayerController().gameVector;
-                GameObject gameObject = CarPlayerController.getCarPlayerController().gameObject;
-                if (gameVector.dx > 0) this.gameVector.dx = 1;
-                else if (gameVector.dx < 0) this.gameVector.dx = -1;
-                else {
-                    if (gameObject.getX() > this.gameObject.getX()) this.gameVector.dx = 1;
-                    else if (gameObject.getX() < this.gameObject.getX()) this.gameVector.dx = -1;
-                }
-                if (gameVector.dy > 0) this.gameVector.dy = 1;
-                else if (gameVector.dy < 0) this.gameVector.dy = -1;
-                else {
-                    if (gameObject.getY() > this.gameObject.getY()) this.gameVector.dy = 1;
-                    else if (gameObject.getY() < this.gameObject.getY()) this.gameVector.dy = -1;
-                }
-                if (this.gameObject.getY() <= 670) this.gameVector.dy = 1;
-                else if (this.gameObject.getY() >= 700) this.gameVector.dy = -1;
+            time ++;
+            if(GameConfig.getInst().durationInSeconds(time) >= 10) {
+                GameObject carGameObject = CarPlayerController.getCarPlayerController().getGameObject();
+                GameVector carGameVector = CarPlayerController.getCarPlayerController().getGameVector();
 
-              //  if(GameConfig.getInst().durationInSeconds(time) >= 15) {
-                //    this.gameObject.setY(720);
-                  //  time = 0;
-                //}
+                if(carGameObject.getX() > this.getGameObject().getX()) this.gameVector.dx = 2;
+                else if(carGameObject.getX() < this.getGameObject().getX()) this.gameVector.dx = -2;
+                else this.gameVector.dx = 0;
+
+                if(carGameObject.getY() > this.getGameObject().getY()) this.gameVector.dy = 2;
+                else if(carGameObject.getY() < this.getGameObject().getY()) this.gameVector.dy = -2;
+                else this.gameVector.dy = 0;
+
+                if(GameConfig.getInst().durationInSeconds(time) >= 15) {
+                    time = 0;
+                    this.gameVector.dy = 2;
+                    this.gameVector.dx = 0;
+                }
             }
+            if(this.gameObject.getY() >= GameConfig.DEFAULT_SCREEN_HEIGHT) this.gameObject.setY(GameConfig.DEFAULT_SCREEN_HEIGHT);
             super.run();
-        //}
+        }
     }
 
     @Override
     public void onCollide(Colliable c) {
         if(c instanceof CarPlayerController && !CarPlayerController.isFly()) {
+            GameUtils.playSound("resources/die_sound.wav", false);
             c.getGameObject().setAlive(false);
         }
     }
@@ -65,8 +63,8 @@ public class PoliceCarController extends SingleController implements Colliable {
     public static PoliceCarController getPoliceCarController() {
         if(policeCarController == null) {
             policeCarController = new PoliceCarController(
-                    new PoliceCar(CarPlayerController.getCarPlayerController().gameObject.getX(),700,60,60),
-                    new ImageDrawer("resources/police_car.png"));
+                    new PoliceCar(CarPlayerController.getCarPlayerController().gameObject.getX(), GameConfig.DEFAULT_SCREEN_HEIGHT, EnemyCar.WIDTH,EnemyCar.HEIGHT),
+                    new ImageDrawer("resources/police.png"));
         }
         return policeCarController;
     }

@@ -183,10 +183,14 @@ public class CarPlayerController extends SingleController implements Colliable {
             switch (((Gift)c.getGameObject()).getGiftType()) {
                 case SHOOT:
                     this.ableToShoot = true;
+                    this.shield = false;
+                    fly = false;
                     ((CarPlayer) this.gameObject).setCarPlayerStatus(CarPlayerStatus.SHOOT);
                     break;
                 case SHIELD:
                     this.shield = true;
+                    this.ableToShoot = false;
+                    fly = false;
                     ((CarPlayer) this.gameObject).setCarPlayerStatus(CarPlayerStatus.SHIELD);
                     break;
                 case HEART:
@@ -196,6 +200,8 @@ public class CarPlayerController extends SingleController implements Colliable {
                     break;
                 case FLY:
                     this.fly = true;
+                    this.ableToShoot = false;
+                    this.shield = false;
                     ((CarPlayer) this.gameObject).setCarPlayerStatus(CarPlayerStatus.FLY);
                     break;
             }

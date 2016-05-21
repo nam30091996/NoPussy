@@ -43,7 +43,7 @@ public class StoneController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable c) {
-        if(c instanceof CarPlayerController || c instanceof BulletController){
+        if((c instanceof CarPlayerController && !CarPlayerController.isFly()) || c instanceof BulletController){
             this.gameObject.setAlive(false);
         }
     }

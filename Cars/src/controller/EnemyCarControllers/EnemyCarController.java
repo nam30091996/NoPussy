@@ -29,6 +29,13 @@ public class EnemyCarController extends SingleController implements Colliable {
     private LanePosition lanePosition;
     private int numberLane = 0;
 
+    public LanePosition getLanePosition() {
+        return lanePosition;
+    }
+
+    public void setLanePosition(LanePosition lanePosition) {
+        this.lanePosition = lanePosition;
+    }
 
     public EnemyCarController(EnemyCar gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
@@ -92,7 +99,7 @@ public class EnemyCarController extends SingleController implements Colliable {
                 GameUtils.playSound("resources/car_sound.wav", false);
             }
         }
-        if(GameConfig.getInst().durationInSeconds(count) >= 2 && this.enemyCarType == EnemyCarType.BLACK) {
+        if(GameConfig.getInst().durationInSeconds(count) >= 1 && this.enemyCarType == EnemyCarType.BLACK) {
             count = 0;
             switch (this.lanePosition) {
                 case LANE1:
@@ -113,8 +120,7 @@ public class EnemyCarController extends SingleController implements Colliable {
             do {
                 lane = (int) (Math.random() * 3);
                 lane --;
-
-            } while (this.check() == false || (this.numberLane == 0 && lane == -1) || (this.numberLane == 3 && lane == 1));
+            } while ((this.numberLane == 0 && lane == -1) || (this.numberLane == 3 && lane == 1));
             this.getGameObject().setX(GameConfig.LANE[this.numberLane + lane].x);
         }
         if(((EnemyCar)this.getGameObject()).getLifeState() == LifeState.DYING) {
@@ -131,7 +137,7 @@ public class EnemyCarController extends SingleController implements Colliable {
 
     private boolean check() {
         for(SingleController enemyCarController : EnemyCarControllerManager.getInst().getSingleControllerVector()) {
-            if(((EnemyCarController)enemyCarController).getEnemyCarType() != EnemyCarType.BLACK && this.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())) return false;
+            if((((EnemyCarController)enemyCarController).getEnemyCarType() != EnemyCarType.BLACK && this.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect()))) return false;
         }
         return true;
     }

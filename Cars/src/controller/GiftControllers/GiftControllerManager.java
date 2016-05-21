@@ -9,7 +9,7 @@ import model.Gift;
  * Created by 1918 on 15-May-16.
  */
 public class GiftControllerManager extends ControllerManager {
-    public static final int TIME = 25;
+    public static final int TIME = 5;
     private int count = 0;
     private static GiftControllerManager inst;
     public static GiftControllerManager getInst() {
