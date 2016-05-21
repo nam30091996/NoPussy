@@ -28,6 +28,14 @@ public class SingleController implements Controller {
         this.gameVector = gameVector;
     }
 
+    public GameVector getGameVector() {
+        return gameVector;
+    }
+
+    public void setGameVector(GameVector gameVector) {
+        this.gameVector = gameVector;
+    }
+
     public GameObject getGameObject() {
         return gameObject;
     }

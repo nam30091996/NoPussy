@@ -86,7 +86,7 @@ public class CarPlayerController extends SingleController implements Colliable {
     private static CarPlayerController carPlayerController;
     public static CarPlayerController getCarPlayerController() {
         if (carPlayerController == null) {
-            CarPlayer carPlayer = new CarPlayer((GameConfig.DEFAULT_SCREEN_WIDTH - EnemyCar.WIDTH) / 2, GameConfig.DEFAULT_SCREEN_HEIGHT - EnemyCar.HEIGHT - 10, EnemyCar.WIDTH, EnemyCar.HEIGHT);
+            CarPlayer carPlayer = new CarPlayer((GameConfig.DEFAULT_SCREEN_WIDTH - EnemyCar.WIDTH) / 2, GameConfig.DEFAULT_SCREEN_HEIGHT - EnemyCar.HEIGHT - 100, EnemyCar.WIDTH, EnemyCar.HEIGHT);
             ImageDrawer carPlayerDrawer = new ImageDrawer("resources/white_car.png");
             AnimationDrawer carPlayerShootDrawer = new AnimationDrawer(new String[]{"resources/white_car.png", "resources/white_car_shoot.png"});
             AnimationDrawer carPlayerShieldDrawer = new AnimationDrawer(new String[]{"resources/shield/white_car.png", "resources/shield/blue_car.png", "resources/shield/green_car.png", "resources/shield/pink_car.png"});

@@ -11,6 +11,7 @@ import controller.EnemyCarControllers.EnemyCarController;
 import controller.EnemyCarControllers.EnemyCarControllerManager;
 import controller.GiftControllers.GiftControllerManager;
 import controller.PointControllers.GamePointControllerManager;
+import controller.PointControllers.HighScoreManager;
 import controller.StoneControllers.StoneControllerManager;
 import model.CarPlayer;
 import model.GameConfig;
@@ -19,8 +20,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Vector;
 
 /**
@@ -37,29 +37,25 @@ public class PlayGameScene extends GameScene {
 
     public PlayGameScene() {
 
-
         this.gameConfig = GameConfig.getInst();
+            controllerVect = new Vector<Controller>();
 
-        controllerVect = new Vector<Controller>();
-        controllerVect.add(CarPlayerController.getCarPlayerController());
-        controllerVect.add(CoinControllerManager.getInst());
-        controllerVect.add(StoneControllerManager.getInst());
-        controllerVect.add(EnemyCarControllerManager.getInst());
-        controllerVect.add(GamePointControllerManager.getInst());
-        controllerVect.add(CarPlayerHPControllerManager.getInst());
-        controllerVect.add(GiftControllerManager.getInst());
-        controllerVect.add(PersonControllerManager.getInst());
+            controllerVect.add(CarPlayerController.getCarPlayerController());
+            controllerVect.add(CoinControllerManager.getInst());
+            controllerVect.add(StoneControllerManager.getInst());
+            controllerVect.add(EnemyCarControllerManager.getInst());
+            controllerVect.add(GamePointControllerManager.getInst());
+            controllerVect.add(CarPlayerHPControllerManager.getInst());
+            controllerVect.add(GiftControllerManager.getInst());
+            controllerVect.add(PersonControllerManager.getInst());
+            controllerVect.add(PoliceCarController.getPoliceCarController());
 
-
-
+            try {
+                this.backgroundImage = ImageIO.read(new File("resources/background.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         this.carPlayerController = CarPlayerController.getCarPlayerController();
-
-        try {
-            this.backgroundImage = ImageIO.read(new File("resources/background.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 
@@ -80,6 +76,9 @@ public class PlayGameScene extends GameScene {
         if(!carPlayerController.getGameObject().isAlive()) {
             reset();
             changeGameScene(GameSceneType.GAMEOVER);
+        }
+        if(((CarPlayer) carPlayerController.getGameObject()).getPoint() == 10) {
+
         }
 
     }
@@ -118,25 +117,10 @@ public class PlayGameScene extends GameScene {
                 break;
             case KeyEvent.VK_P:
                 this.pause = true;
-//                for (Controller controller : controllerVect) {
-//                    if(controller instanceof SingleController) {
-//                        ((SingleController) controller).setPause(true);
-//                    }
-//                    else {
-//                        ((ControllerManager) controller).setPause(true);
-//                    }
-//                }
+
                 break;
             case KeyEvent.VK_R:
                 this.pause = false;
-//                for (Controller controller : controllerVect) {
-//                    if(controller instanceof SingleController) {
-//                        ((SingleController) controller).setPause(false);
-//                    }
-//                    else {
-//                        ((ControllerManager) controller).setPause(false);
-//                    }
-//                }
                 break;
         }
 
@@ -174,6 +158,20 @@ public class PlayGameScene extends GameScene {
         PersonControllerManager.setNull();
         EnemyCarController.setSpeed(EnemyCarController.SPEED);
         CollisionPool.getInst().reset();
+        this.carPlayerController = CarPlayerController.getCarPlayerController();
+    }
+
+    public void resetAll() {
+        CoinControllerManager.setNull();
+        EnemyCarControllerManager.setNull();
+        StoneControllerManager.setNull();
+        CarPlayerController.setNull();
+        GiftControllerManager.setNull();
+        PersonControllerManager.setNull();
+        EnemyCarController.setSpeed(EnemyCarController.SPEED);
+        CollisionPool.getInst().reset();
+        GamePointControllerManager.setNull();
+        CarPlayer.setPoint(0);
         this.carPlayerController = CarPlayerController.getCarPlayerController();
     }
 }

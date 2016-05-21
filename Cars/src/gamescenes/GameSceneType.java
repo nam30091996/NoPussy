@@ -7,5 +7,6 @@ public enum GameSceneType {
     MENU,
     PLAY,
     GAMEOVER,
-    GUIDE
+    GUIDE,
+    ABOUT
 }

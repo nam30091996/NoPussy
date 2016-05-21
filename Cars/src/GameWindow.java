@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
 
 /**
@@ -178,6 +179,10 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
                 break;
             case GUIDE:
                 gameScene = new GuideScene();
+                gameScene.setGameSceneListener(this);
+                break;
+            case ABOUT:
+                gameScene = new AboutScene();
                 gameScene.setGameSceneListener(this);
                 break;
         }
