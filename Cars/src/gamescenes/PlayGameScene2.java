@@ -5,12 +5,15 @@ import controller.CarPlayerControllers.CarPlayerDirection;
 import controller.CoinControllers.CoinControllerManager;
 import controller.CollisionPool;
 import controller.Controller;
+import controller.EnemyCarControllers.EnemyCarController;
 import controller.EnemyCarControllers.EnemyCarControllerManager;
 import controller.GiftControllers.GiftControllerManager;
 import controller.PersonController.PersonControllerManager;
+import controller.PersonController.PikachuControllerManager;
 import controller.PointControllers.BatteryController;
 import controller.PointControllers.CarPlayerHPControllerManager;
 import controller.PointControllers.GamePointControllerManager;
+import controller.PoliceCarController;
 import controller.StoneControllers.StoneControllerManager;
 import model.CarPlayer;
 import model.GameConfig;
@@ -81,7 +84,7 @@ public class PlayGameScene2 extends GameScene {
         }
         CarPlayerHPControllerManager.getInst().updateHP(((CarPlayer) carPlayerController.getGameObject()).getHp());
         if(!carPlayerController.getGameObject().isAlive()) {
-            reset();
+            reset1();
             changeGameScene(GameSceneType.GAMEOVER);
         }
 
@@ -167,6 +170,20 @@ public class PlayGameScene2 extends GameScene {
 //        PoliceCarController.setNull();
 //        EnemyCarController.setSpeed(EnemyCarController.SPEED);
         CollisionPool.getInst().reset1();
+        this.carPlayerController = CarPlayerController.getCarPlayerController();
+    }
+
+    public void reset1() {
+        CoinControllerManager.setNull();
+        EnemyCarControllerManager.setNull();
+        StoneControllerManager.setNull();
+        CarPlayerController.setNull();
+        GiftControllerManager.setNull();
+        PersonControllerManager.setNull();
+        PikachuControllerManager.setNull();
+        PoliceCarController.setNull();
+        EnemyCarController.setSpeed(EnemyCarController.SPEED);
+        CollisionPool.getInst().reset();
         this.carPlayerController = CarPlayerController.getCarPlayerController();
     }
 }

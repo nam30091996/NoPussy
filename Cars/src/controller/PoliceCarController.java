@@ -41,7 +41,7 @@ public class PoliceCarController extends SingleController implements Colliable {
                 else if(carGameObject.getY() < this.getGameObject().getY()) this.gameVector.dy = -2;
                 else this.gameVector.dy = 0;
 
-                if(GameConfig.getInst().durationInSeconds(time) >= 15) {
+                if(GameConfig.getInst().durationInSeconds(time) >= 13) {
                     time = 0;
                     this.gameVector.dy = 2;
                     this.gameVector.dx = 0;
