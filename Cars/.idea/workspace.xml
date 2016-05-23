@@ -30,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CarPlayerController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CarPlayerController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/CarPlayerControllers/CarPlayerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1298">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="2239">
+              <caret line="140" column="51" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,21 +42,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayGameScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene.java">
+      <file leaf-file-name="CoinController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/CoinControllers/CoinController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-438">
-              <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+            <state relative-caret-position="146">
+              <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayGameScene1.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene1.java">
+      <file leaf-file-name="PlayGameScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3322">
-              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+            <state relative-caret-position="1254">
+              <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
@@ -67,9 +67,11 @@
       <file leaf-file-name="PlayGameScene2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1848">
+            <state relative-caret-position="1430">
               <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,10 +79,11 @@
       <file leaf-file-name="PoliceCarController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/PoliceCarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
+            <state relative-caret-position="1078">
               <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2795#2796#0" expanded="false" />
+                <element signature="e#2837#2838#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -89,7 +92,7 @@
       <file leaf-file-name="EnemyCarController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
+            <state relative-caret-position="514">
               <caret line="126" column="91" selection-start-line="126" selection-start-column="91" selection-end-line="126" selection-end-column="91" />
               <folding />
             </state>
@@ -99,9 +102,20 @@
       <file leaf-file-name="GameConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/GameConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="264">
               <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-              <folding />
+              <folding>
+                <element signature="e#1090#1091#0" expanded="false" />
+                <element signature="e#1124#1125#0" expanded="false" />
+                <element signature="e#1160#1161#0" expanded="false" />
+                <element signature="e#1195#1196#0" expanded="false" />
+                <element signature="e#1230#1231#0" expanded="false" />
+                <element signature="e#1264#1265#0" expanded="false" />
+                <element signature="e#1315#1316#0" expanded="false" />
+                <element signature="e#1357#1358#0" expanded="false" />
+                <element signature="e#1404#1405#0" expanded="false" />
+                <element signature="e#1453#1454#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,18 +123,28 @@
       <file leaf-file-name="EnemyCarControllerManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarControllerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+            <state relative-caret-position="1122">
+              <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuGameScene.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CollisionPool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/CollisionPool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="73" column="10" selection-start-line="73" selection-start-column="10" selection-end-line="73" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuGameScene.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gamescenes/MenuGameScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+            <state relative-caret-position="111">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -178,24 +202,24 @@
         <option value="$PROJECT_DIR$/src/model/CarPlayerStatus.java" />
         <option value="$PROJECT_DIR$/src/view/CarPlayerDrawer.java" />
         <option value="$PROJECT_DIR$/src/controller/GiftControllers/GiftType.java" />
-        <option value="$PROJECT_DIR$/src/controller/CoinControllers/CoinController.java" />
         <option value="$PROJECT_DIR$/src/controller/PersonController/PersonController.java" />
         <option value="$PROJECT_DIR$/src/controller/PersonController/PikachuController.java" />
         <option value="$PROJECT_DIR$/src/controller/GiftControllers/GiftController.java" />
         <option value="$PROJECT_DIR$/src/gamescenes/PlayGameScene.java" />
         <option value="$PROJECT_DIR$/src/gamescenes/GameSceneType.java" />
         <option value="$PROJECT_DIR$/src/GameWindow.java" />
-        <option value="$PROJECT_DIR$/src/controller/CollisionPool.java" />
         <option value="$PROJECT_DIR$/src/controller/SingleController.java" />
-        <option value="$PROJECT_DIR$/src/controller/CarPlayerControllers/CarPlayerController.java" />
         <option value="$PROJECT_DIR$/src/controller/GiftControllers/GiftControllerManager.java" />
         <option value="$PROJECT_DIR$/src/controller/StoneControllers/StoneController.java" />
         <option value="$PROJECT_DIR$/src/gamescenes/PlayGameScene1.java" />
         <option value="$PROJECT_DIR$/src/gamescenes/PlayGameScene2.java" />
         <option value="$PROJECT_DIR$/src/controller/PoliceCarController.java" />
-        <option value="$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarControllerManager.java" />
         <option value="$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarController.java" />
         <option value="$PROJECT_DIR$/src/gamescenes/MenuGameScene.java" />
+        <option value="$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarControllerManager.java" />
+        <option value="$PROJECT_DIR$/src/controller/CollisionPool.java" />
+        <option value="$PROJECT_DIR$/src/controller/CoinControllers/CoinController.java" />
+        <option value="$PROJECT_DIR$/src/controller/CarPlayerControllers/CarPlayerController.java" />
       </list>
     </option>
   </component>
@@ -240,6 +264,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -538,32 +563,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cars" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="cars" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -863,12 +877,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
+    <frame x="-9" y="-9" width="1932" height="1048" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.4969743" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822758" sideWeight="0.4969743" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5030257" order="1" side_tool="true" content_ui="tabs" />
@@ -1045,14 +1059,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CoinControllers/CoinController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="43" column="75" selection-start-line="43" selection-start-column="75" selection-end-line="43" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/EnemyCarControllers/BatteryCarController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -1071,7 +1077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,15 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CollisionPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-77">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1139,7 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,7 +1162,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="46" column="81" selection-start-line="46" selection-start-column="81" selection-end-line="46" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,21 +1179,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CarPlayerControllers/CarPlayerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/GiftControllers/GiftControllerManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1216,9 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="43" column="24" selection-start-line="28" selection-start-column="12" selection-end-line="43" selection-end-column="24" />
-          <folding>
-            <element signature="e#1504#1588#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1226,13 +1205,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3322">
+        <state relative-caret-position="3630">
           <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -1242,59 +1220,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
+        <state relative-caret-position="1430">
           <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/PoliceCarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
+        <state relative-caret-position="1078">
           <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2795#2796#0" expanded="false" />
+            <element signature="e#2837#2838#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/GameConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="264">
           <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="e#1090#1091#0" expanded="false" />
+            <element signature="e#1124#1125#0" expanded="false" />
+            <element signature="e#1160#1161#0" expanded="false" />
+            <element signature="e#1195#1196#0" expanded="false" />
+            <element signature="e#1230#1231#0" expanded="false" />
+            <element signature="e#1264#1265#0" expanded="false" />
+            <element signature="e#1315#1316#0" expanded="false" />
+            <element signature="e#1357#1358#0" expanded="false" />
+            <element signature="e#1404#1405#0" expanded="false" />
+            <element signature="e#1453#1454#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarControllerManager.java">
+    <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+        <state relative-caret-position="1254">
+          <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gamescenes/MenuGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="514">
           <caret line="126" column="91" selection-start-line="126" selection-start-column="91" selection-end-line="126" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gamescenes/PlayGameScene.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/EnemyCarControllers/EnemyCarControllerManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-438">
-          <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+        <state relative-caret-position="1122">
+          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gamescenes/MenuGameScene.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/CollisionPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+        <state relative-caret-position="244">
+          <caret line="73" column="10" selection-start-line="73" selection-start-column="10" selection-end-line="73" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CoinControllers/CoinController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CarPlayerControllers/CarPlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2239">
+          <caret line="140" column="51" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1303,7 +1323,13 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
+          <artifact-editor>
+            <show-sorted>false</show-sorted>
+            <show-content>
+              <type id="artifact" />
+              <type id="library" />
+            </show-content>
+          </artifact-editor>
           <last-edited>Cars:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
@@ -1357,6 +1383,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

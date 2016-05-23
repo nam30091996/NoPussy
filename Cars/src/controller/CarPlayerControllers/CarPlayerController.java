@@ -28,7 +28,7 @@ import java.awt.*;
  */
 public class CarPlayerController extends SingleController implements Colliable {
     public final int SPEED = 7;
-    public final int TIME_SHOOT = 10;
+    public final int TIME_GIFT = 10;
     public final int TIME_REDUCE_BATTERY = 6;
 
     private boolean ableToShoot = false;
@@ -129,7 +129,7 @@ public class CarPlayerController extends SingleController implements Colliable {
                 ((CarPlayer)this.gameObject).decreaseHP();
             }
             Rectangle rectangle=this.gameObject.getNextRect(this.gameVector);
-            if(GameConfig.getInst().durationInSeconds(count_gift) >= TIME_SHOOT && this.ableToShoot) {
+            if(GameConfig.getInst().durationInSeconds(count_gift) >= TIME_GIFT && (this.ableToShoot || this.isFly() || this.shield)) {
                 count_gift = 0;
                 this.ableToShoot = false;
                 this.shield = false;
@@ -175,7 +175,7 @@ public class CarPlayerController extends SingleController implements Colliable {
             if (((CarPlayer) gameObject).getHp() <= 0) {
                 this.gameObject.setAlive(false);
             }
-        } else if(c instanceof CoinController && !this.fly) {
+        } else if(c instanceof CoinController) {
             GameUtils.playSound("resources/get_score_sound.wav", false);
             if(((Coin)c.getGameObject()).getCoinType() == CoinType.RED) EnemyCarController.increaseSpeed(-1);
         } else if(c instanceof GiftController) {

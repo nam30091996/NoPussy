@@ -71,7 +71,7 @@ public class CollisionPool {
             }
             else iterator.remove();
         }
-        System.out.println(colliableVector.size());
+        //System.out.println(colliableVector.size());
     }
 
     public void remove(Colliable tagget) {
