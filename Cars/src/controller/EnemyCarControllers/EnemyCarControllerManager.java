@@ -50,12 +50,14 @@ public class EnemyCarControllerManager extends ControllerManager {
             }
             else {
                 do {
-                    enemyCarType = EnemyCarType.getRandom();
+//                    enemyCarType = EnemyCarType.getRandom();
+                    enemyCarType = EnemyCarType.BLACK;
                 } while (enemyCarType == EnemyCarType.BATTERY);
                 car1 = EnemyCarController.create(enemyCarType, LanePosition.getRandom());
             }
             do {
-                enemyCarType = EnemyCarType.getRandom();
+//                enemyCarType = EnemyCarType.getRandom();
+                enemyCarType = EnemyCarType.BLACK;
             } while (enemyCarType == EnemyCarType.BATTERY);
             EnemyCarController car2 =  EnemyCarController.create(enemyCarType,LanePosition.getRandom());
 //            EnemyCarController car3 =  EnemyCarController.create(EnemyCarType.getRandom(),LanePosition.getRandom());

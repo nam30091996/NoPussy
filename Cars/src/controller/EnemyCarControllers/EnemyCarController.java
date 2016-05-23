@@ -117,11 +117,15 @@ public class EnemyCarController extends SingleController implements Colliable {
 
             }
             int lane;
-            do {
+            //do {
+
                 lane = (int) (Math.random() * 3);
                 lane --;
-            } while ((this.numberLane == 0 && lane == -1) || (this.numberLane == 3 && lane == 1));
-            this.getGameObject().setX(GameConfig.LANE[this.numberLane + lane].x);
+            //} while ((this.numberLane == 0 && lane == -1) || (this.numberLane == 3 && lane == 1));
+            if(!(this.numberLane == 0 && lane == -1) && !(this.numberLane == 3 && lane == 1)) {
+                this.getGameObject().setX(GameConfig.LANE[this.numberLane + lane].x);
+                if (!check(this)) this.getGameObject().setX(GameConfig.LANE[this.numberLane].x);
+            }
         }
         if(((EnemyCar)this.getGameObject()).getLifeState() == LifeState.DYING) {
             CollisionPool.getInst().remove(this);
@@ -135,9 +139,13 @@ public class EnemyCarController extends SingleController implements Colliable {
         }
     }
 
-    private boolean check() {
+    private boolean check(EnemyCarController controller) {
         for(SingleController enemyCarController : EnemyCarControllerManager.getInst().getSingleControllerVector()) {
-            if((((EnemyCarController)enemyCarController).getEnemyCarType() != EnemyCarType.BLACK && this.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect()))) return false;
+            if((((EnemyCarController)enemyCarController).getEnemyCarType() != EnemyCarType.BLACK
+                    && controller.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect()))) return false;
+            if(((EnemyCarController)enemyCarController).getEnemyCarType() == EnemyCarType.BLACK
+                    && enemyCarController != controller
+                    && controller.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())) return false;
         }
         return true;
     }

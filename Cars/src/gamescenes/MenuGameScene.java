@@ -49,6 +49,7 @@ public class MenuGameScene extends GameScene {
 
     @Override
     public void onKeyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) changeGameScene(GameSceneType.PLAY1);
     }
 
     @Override
