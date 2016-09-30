@@ -1,7 +1,7 @@
 package controller.StoneControllers;
 
 import controller.ControllerManager;
-import gamescenes.PlayGameScene;
+import gamescenes.Level3GameScene;
 import model.GameConfig;
 
 /**
@@ -12,8 +12,9 @@ public class StoneControllerManager extends ControllerManager {
 
     private int count = 0;
     private static StoneControllerManager inst;
+
     public static StoneControllerManager getInst() {
-        if(inst == null) {
+        if (inst == null) {
             inst = new StoneControllerManager();
         }
         return inst;
@@ -22,8 +23,8 @@ public class StoneControllerManager extends ControllerManager {
     @Override
     public void run() {
         super.run();
-        if(!PlayGameScene.pause) count++;
-        if(GameConfig.getInst().durationInSeconds(count) >= TIME && this.singleControllerVector.size() == 0) {
+        if (!Level3GameScene.pause) count++;
+        if (GameConfig.getInst().durationInSeconds(count) >= TIME && this.singleControllerVector.size() == 0) {
             this.count = 0;
             this.singleControllerVector.add(StoneController.create());
         }

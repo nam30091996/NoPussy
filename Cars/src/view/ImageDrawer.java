@@ -1,7 +1,6 @@
 package view;
 
 
-
 import model.GameObject;
 
 import javax.imageio.ImageIO;
@@ -26,6 +25,6 @@ public class ImageDrawer implements GameDrawer {
 
     @Override
     public void paint(GameObject gameObject, Graphics g) {
-        g.drawImage(this.image, gameObject.getX(), gameObject.getY(), gameObject.getWidth(),gameObject.getHeight(), null);
+        g.drawImage(this.image, gameObject.getX(), gameObject.getY(), gameObject.getWidth(), gameObject.getHeight(), null);
     }
 }

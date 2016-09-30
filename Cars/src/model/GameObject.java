@@ -70,6 +70,6 @@ public class GameObject {
     }
 
     public Rectangle getNextRect(GameVector gameVector) {
-        return new Rectangle(x+gameVector.dx, y+gameVector.dy, width, height);
+        return new Rectangle(x + gameVector.dx, y + gameVector.dy, width, height);
     }
 }

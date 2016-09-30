@@ -41,10 +41,9 @@ public class BulletController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable c) {
-        if(c instanceof EnemyCarController || c instanceof StoneController) {
+        if (c instanceof EnemyCarController || c instanceof StoneController) {
             this.getGameObject().setAlive(false);
-        }
-        else if(c instanceof PersonController) {
+        } else if (c instanceof PersonController) {
             ((CarPlayer) CarPlayerController.getCarPlayerController().getGameObject()).decreaseHP(2);
             this.getGameObject().setAlive(false);
         }

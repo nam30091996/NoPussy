@@ -7,7 +7,7 @@ import controller.CollisionPool;
 import controller.EnemyCarControllers.EnemyCarController;
 import controller.EnemyCarControllers.LanePosition;
 import controller.SingleController;
-import gamescenes.PlayGameScene;
+import gamescenes.Level3GameScene;
 import model.GameConfig;
 import model.GameObject;
 import model.GameVector;
@@ -20,7 +20,7 @@ import java.awt.*;
 /**
  * Created by MyComputer on 5/21/2016.
  */
-public class PersonController extends SingleController implements Colliable{
+public class PersonController extends SingleController implements Colliable {
     public PersonController(GameObject gameObject, GameDrawer gameDrawer) {
         super(gameObject, gameDrawer);
         this.gameVector.dx = 2;
@@ -40,31 +40,32 @@ public class PersonController extends SingleController implements Colliable{
 
     @Override
     public void run() {
-        if(!PlayGameScene.pause) {
+        if (!Level3GameScene.pause) {
             super.run();
             this.gameVector.dx = 2;
         }
         int x = this.gameObject.getX();
-        if(x >= 0 && x < GameConfig.DEFAULT_SCREEN_WIDTH / 4) ((Person)gameObject).setLane(LanePosition.LANE1);
-        else if(x >= GameConfig.DEFAULT_SCREEN_WIDTH / 4 && x < GameConfig.DEFAULT_SCREEN_WIDTH / 2) ((Person)gameObject).setLane(LanePosition.LANE2);
-        else if(x >= GameConfig.DEFAULT_SCREEN_WIDTH / 2 && x < GameConfig.DEFAULT_SCREEN_WIDTH / 4 * 3) ((Person)gameObject).setLane(LanePosition.LANE3);
-        else ((Person)gameObject).setLane(LanePosition.LANE4);
-        if(this.gameObject.getX() > GameConfig.DEFAULT_SCREEN_WIDTH) this.gameObject.setAlive(false);
+        if (x >= 0 && x < GameConfig.DEFAULT_SCREEN_WIDTH / 4) ((Person) gameObject).setLane(LanePosition.LANE1);
+        else if (x >= GameConfig.DEFAULT_SCREEN_WIDTH / 4 && x < GameConfig.DEFAULT_SCREEN_WIDTH / 2)
+            ((Person) gameObject).setLane(LanePosition.LANE2);
+        else if (x >= GameConfig.DEFAULT_SCREEN_WIDTH / 2 && x < GameConfig.DEFAULT_SCREEN_WIDTH / 4 * 3)
+            ((Person) gameObject).setLane(LanePosition.LANE3);
+        else ((Person) gameObject).setLane(LanePosition.LANE4);
+        if (this.gameObject.getX() > GameConfig.DEFAULT_SCREEN_WIDTH) this.gameObject.setAlive(false);
     }
 
     @Override
     public void paint(Graphics g) {
-        if(this.getGameObject().isAlive()) {
+        if (this.getGameObject().isAlive()) {
             super.paint(g);
         }
     }
 
     @Override
     public void onCollide(Colliable c) {
-        if((c instanceof CarPlayerController && !CarPlayerController.isFly()) || c instanceof BulletController) {
+        if ((c instanceof CarPlayerController && !CarPlayerController.isFly()) || c instanceof BulletController) {
             this.getGameObject().setAlive(false);
-        }
-        else if (c instanceof EnemyCarController) {
+        } else if (c instanceof EnemyCarController) {
             this.gameVector.dx = 0;
         }
     }

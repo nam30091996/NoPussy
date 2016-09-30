@@ -5,10 +5,10 @@ package gamescenes;
  */
 public enum GameSceneType {
     MENU,
-    PLAY,
-    GAMEOVER,
+    LEVEL_1,
+    LEVEL_2,
+    LEVEL_3,
+    GAME_OVER,
     GUIDE,
-    ABOUT,
-    PLAY1,
-    PLAY2
+    ABOUT
 }

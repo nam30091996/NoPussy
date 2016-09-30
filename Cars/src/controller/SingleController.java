@@ -1,8 +1,8 @@
 package controller;
 
-import gamescenes.PlayGameScene;
-import gamescenes.PlayGameScene1;
-import gamescenes.PlayGameScene2;
+import gamescenes.Level3GameScene;
+import gamescenes.Level1GameScene;
+import gamescenes.Level2GameScene;
 import model.GameObject;
 import model.GameVector;
 import view.GameDrawer;
@@ -44,7 +44,7 @@ public class SingleController implements Controller {
 
     @Override
     public void run() {
-        if(!PlayGameScene.pause && !PlayGameScene1.pause && !PlayGameScene2.pause) {
+        if (!Level3GameScene.pause && !Level1GameScene.pause && !Level2GameScene.pause) {
             gameObject.move(gameVector);
         }
     }

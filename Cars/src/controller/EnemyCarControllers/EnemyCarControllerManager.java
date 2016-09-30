@@ -1,13 +1,8 @@
 package controller.EnemyCarControllers;
 
 import controller.ControllerManager;
-import gamescenes.PlayGameScene;
-import model.EnemyCar;
+import gamescenes.Level3GameScene;
 import model.GameConfig;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by MyComputer on 5/12/2016.
@@ -17,8 +12,9 @@ public class EnemyCarControllerManager extends ControllerManager {
     private int time = 0;
 
     private static EnemyCarControllerManager inst;
+
     public static EnemyCarControllerManager getInst() {
-        if(inst == null) {
+        if (inst == null) {
             inst = new EnemyCarControllerManager();
         }
         return inst;
@@ -30,25 +26,24 @@ public class EnemyCarControllerManager extends ControllerManager {
 
     @Override
     public void run() {
-        if(!PlayGameScene.pause) {
+        if (!Level3GameScene.pause) {
             super.run();
-            time ++;
+            time++;
         }
 
         //DuTQ: tạo 3 ô tô địch ở 3 lane random, thừa một lane để tránh
         //Nam: so sánh size() với 0 chứ trong trường hợp mình đâm chết 1 cái xong lập tức nó ra 3 cái mới luôn
-        if (((this.singleControllerVector.size() == 0) || (this.singleControllerVector.size() == 1 && this.singleControllerVector.get(0).getGameObject().getY() >= GameConfig.DEFAULT_SCREEN_HEIGHT / 3 ))
+        if (((this.singleControllerVector.size() == 0) || (this.singleControllerVector.size() == 1 && this.singleControllerVector.get(0).getGameObject().getY() >= GameConfig.DEFAULT_SCREEN_HEIGHT / 3))
 //                || (this.singleControllerVector.size() < 4 && this.singleControllerVector.get(0).getGameObject().getY() >= GameConfig.DEFAULT_SCREEN_HEIGHT / 3)
-        ) {
+                ) {
 
-            int count = (int)(Math.random() * 3);
+            int count = (int) (Math.random() * 3);
             EnemyCarController car1;
             EnemyCarType enemyCarType = null;
-            if(GameConfig.getInst().durationInSeconds(time) >= 20) {
+            if (GameConfig.getInst().durationInSeconds(time) >= 20) {
                 time = 0;
-                car1 =  EnemyCarController.create(EnemyCarType.BATTERY,LanePosition.getRandom());
-            }
-            else {
+                car1 = EnemyCarController.create(EnemyCarType.BATTERY, LanePosition.getRandom());
+            } else {
                 do {
                     enemyCarType = EnemyCarType.getRandom();
 //                    enemyCarType = EnemyCarType.BLACK;
@@ -59,7 +54,7 @@ public class EnemyCarControllerManager extends ControllerManager {
                 enemyCarType = EnemyCarType.getRandom();
 //                enemyCarType = EnemyCarType.BLACK;
             } while (enemyCarType == EnemyCarType.BATTERY);
-            EnemyCarController car2 =  EnemyCarController.create(enemyCarType,LanePosition.getRandom());
+            EnemyCarController car2 = EnemyCarController.create(enemyCarType, LanePosition.getRandom());
 //            EnemyCarController car3 =  EnemyCarController.create(EnemyCarType.getRandom(),LanePosition.getRandom());
             if (car2.getGameObject().getY() == car1.getGameObject().getY() && car2.getGameObject().getX() == car1.getGameObject().getX()) {
                 car2.getGameObject().setY(car1.getGameObject().getY() - GameConfig.DEFAULT_SCREEN_HEIGHT / 2);
@@ -70,7 +65,7 @@ public class EnemyCarControllerManager extends ControllerManager {
 //            if (car3.getGameObject().getY() == car2.getGameObject().getY() && car3.getGameObject().getX() == car2.getGameObject().getX()) {
 //                car3.getGameObject().setY(car2.getGameObject().getY() - GameConfig.DEFAULT_SCREEN_HEIGHT / 2);
 //            }
-            switch(count) {
+            switch (count) {
                 case 1:
                     singleControllerVector.add(
                             car1);
@@ -78,7 +73,7 @@ public class EnemyCarControllerManager extends ControllerManager {
                 case 2:
 
                     singleControllerVector.add(
-                           car1
+                            car1
                     );
                     singleControllerVector.add(
                             car2

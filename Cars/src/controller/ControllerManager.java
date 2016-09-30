@@ -33,9 +33,9 @@ public class ControllerManager implements Controller {
     @Override
     public void run() {
         Iterator<SingleController> iterator = singleControllerVector.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             SingleController singleController = iterator.next();
-            if(!singleController.getGameObject().isAlive()) {
+            if (!singleController.getGameObject().isAlive()) {
                 iterator.remove();
             } else {
                 singleController.run();
@@ -45,16 +45,8 @@ public class ControllerManager implements Controller {
 
     @Override
     public void paint(Graphics g) {
-        for(SingleController controller : singleControllerVector) {
+        for (SingleController controller : singleControllerVector) {
             controller.paint(g);
         }
     }
-
-//    public void setPause(boolean pause) {
-//        Iterator<SingleController> iterator = singleControllerVector.iterator();
-//        while(iterator.hasNext()) {
-//            SingleController singleController = iterator.next();
-//            singleController.setPause(pause);
-//        }
-//    }
 }

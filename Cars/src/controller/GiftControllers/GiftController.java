@@ -23,10 +23,11 @@ public class GiftController extends SingleController implements Colliable {
     }
 
     public void onCollide(Colliable c) {
-        if(c instanceof CarPlayerController) {
+        if (c instanceof CarPlayerController) {
             this.gameObject.setAlive(false);
         }
     }
+
     public void run() {
         super.run();
         if (!GameConfig.getInst().isInScreen(this.gameObject) && !GameConfig.getInst().isInStartPosition(this.gameObject)) {
@@ -35,9 +36,9 @@ public class GiftController extends SingleController implements Colliable {
     }
 
     public static GiftController create(GiftType giftType, int x, int y) {
-        Gift gift = new Gift(x, y, Gift.WITDH, Gift.HEIGHT, giftType);
+        Gift gift = new Gift(x, y, Gift.WIDTH, Gift.HEIGHT, giftType);
         ImageDrawer imageDrawer = null;
-        switch (giftType){
+        switch (giftType) {
             case SHOOT:
                 imageDrawer = new ImageDrawer("resources/gift.png");
                 break;

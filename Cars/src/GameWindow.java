@@ -9,19 +9,18 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.Scanner;
 
 /**
  * Created by MyComputer on 5/11/2016.
  */
-public class GameWindow extends Frame implements Runnable,GameSceneListener {
+public class GameWindow extends Frame implements Runnable, GameSceneListener {
 
-    Thread thread;
-    Image backbufferImage;
-    GameConfig gameConfig;
-    GameScene gameScene;
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private Thread thread;
+    private Image backbufferImage;
+    private GameConfig gameConfig;
+    private GameScene gameScene;
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     double width = screenSize.getWidth();
     double height = screenSize.getHeight();
 
@@ -47,7 +46,7 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
         }
 
         this.setVisible(true);
-        this.setLocation((int)(width - GameConfig.DEFAULT_SCREEN_WIDTH) / 2, (int)(height - GameConfig.DEFAULT_SCREEN_HEIGHT)/2);
+        this.setLocation((int) (width - GameConfig.DEFAULT_SCREEN_WIDTH) / 2, (int) (height - GameConfig.DEFAULT_SCREEN_HEIGHT) / 2);
         this.setSize(GameConfig.DEFAULT_SCREEN_WIDTH, GameConfig.DEFAULT_SCREEN_HEIGHT);
 
 
@@ -139,8 +138,8 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
 
     @Override
     public void update(Graphics g) {
-        if(backbufferImage == null){
-            backbufferImage =  new BufferedImage(gameConfig.getScreenWidth(), gameConfig.getScreenHeight(), 1);
+        if (backbufferImage == null) {
+            backbufferImage = new BufferedImage(gameConfig.getScreenWidth(), gameConfig.getScreenHeight(), 1);
         }
         Graphics backbufferGraphics = backbufferImage.getGraphics();
 
@@ -163,17 +162,17 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
     }
 
     @Override
-    public void changeGameScence(GameSceneType gameSceneType) {
+    public void onGameSceneChanged(GameSceneType gameSceneType) {
         switch (gameSceneType) {
-            case PLAY:
-                gameScene = new PlayGameScene();
+            case LEVEL_3:
+                gameScene = new Level3GameScene();
                 gameScene.setGameSceneListener(this);
                 break;
             case MENU:
                 gameScene = new MenuGameScene();
                 gameScene.setGameSceneListener(this);
                 break;
-            case GAMEOVER:
+            case GAME_OVER:
                 gameScene = new GameOverScene();
                 gameScene.setGameSceneListener(this);
                 break;
@@ -185,12 +184,12 @@ public class GameWindow extends Frame implements Runnable,GameSceneListener {
                 gameScene = new AboutScene();
                 gameScene.setGameSceneListener(this);
                 break;
-            case PLAY1:
-                gameScene = new PlayGameScene1();
+            case LEVEL_1:
+                gameScene = new Level1GameScene();
                 gameScene.setGameSceneListener(this);
                 break;
-            case PLAY2:
-                gameScene = new PlayGameScene2();
+            case LEVEL_2:
+                gameScene = new Level2GameScene();
                 gameScene.setGameSceneListener(this);
                 break;
         }

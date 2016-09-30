@@ -20,7 +20,7 @@ public class AnimationDrawer implements GameDrawer {
 
     public AnimationDrawer(String[] imageUrls) {
         imageVector = new Vector<Image>();
-        for(String imageUrl : imageUrls) {
+        for (String imageUrl : imageUrls) {
             try {
                 Image image = ImageIO.read(new File(imageUrl));
                 imageVector.add(image);
@@ -30,17 +30,6 @@ public class AnimationDrawer implements GameDrawer {
         }
     }
 
-//    public AnimationDrawer(Vector<Image> imageVector) {
-//        this.imageVector = imageVector;
-//    }
-//
-//    public AnimationDrawer(Image[] images) {
-//        this.imageVector = new Vector<Image>();
-//        for(Image image : images) {
-//            this.imageVector.add(image);
-//
-//        }
-//    }
     @Override
     public void paint(GameObject gameObject, Graphics g) {
         Image image = imageVector.get(imageIdx);
@@ -52,7 +41,7 @@ public class AnimationDrawer implements GameDrawer {
         if (GameConfig.getInst().durationInMiliseconds(count) >= 50) {
             count = 0;
             imageIdx++;
-            if(imageIdx >= imageVector.size()) {
+            if (imageIdx >= imageVector.size()) {
                 onEndImageVector(gameObject);
             }
         }

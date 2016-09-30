@@ -19,7 +19,7 @@ public class GameObjectWithHP extends GameObject {
 
     public void setLifeState(LifeState lifeState) {
         this.lifeState = lifeState;
-        if(lifeState == LifeState.DEAD) {
+        if (lifeState == LifeState.DEAD) {
             isAlive = false;
         }
     }
@@ -42,7 +42,7 @@ public class GameObjectWithHP extends GameObject {
 
     public void decreaseHP(int delta) {
         this.hp -= delta;
-        if(this.hp <= 0) {
+        if (this.hp <= 0) {
             this.lifeState = LifeState.DYING;
         }
     }

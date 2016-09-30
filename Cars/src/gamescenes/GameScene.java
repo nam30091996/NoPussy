@@ -18,9 +18,9 @@ public abstract class GameScene {
     }
 
     protected void changeGameScene(GameSceneType gameSceneType) {
-        if(gameSceneListener != null) {
-            gameSceneListener.changeGameScence(gameSceneType);
-            gameSceneListener  = null;
+        if (gameSceneListener != null) {
+            gameSceneListener.onGameSceneChanged(gameSceneType);
+            gameSceneListener = null;
         }
     }
 

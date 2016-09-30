@@ -31,43 +31,43 @@ public class GamePointController extends SingleController {
         switch (number) {
             case 0:
                 imageDrawer = new ImageDrawer("resources/number/zero.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 1:
                 imageDrawer = new ImageDrawer("resources/number/one.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 2:
                 imageDrawer = new ImageDrawer("resources/number/two.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 3:
                 imageDrawer = new ImageDrawer("resources/number/three.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 4:
                 imageDrawer = new ImageDrawer("resources/number/four.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 5:
                 imageDrawer = new ImageDrawer("resources/number/five.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 6:
                 imageDrawer = new ImageDrawer("resources/number/six.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 7:
                 imageDrawer = new ImageDrawer("resources/number/seven.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 8:
                 imageDrawer = new ImageDrawer("resources/number/eight.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
             case 9:
                 imageDrawer = new ImageDrawer("resources/number/nine.png");
-                gamePointController = new GamePointController(gamePoint,imageDrawer);
+                gamePointController = new GamePointController(gamePoint, imageDrawer);
                 break;
         }
         return gamePointController;

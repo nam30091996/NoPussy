@@ -16,7 +16,7 @@ public class HighScoreManager extends ControllerManager {
 
     public void updateHighScore(int highScore) {
         this.singleControllerVector.removeAllElements();
-        int [] digits = GameUtils.getDigit(highScore);
+        int[] digits = GameUtils.getDigit(highScore);
         int tempX = GameOverScene.DEFAULT_X[digits.length - 1];
         for (int digit : digits) {
             this.singleControllerVector.add(
@@ -32,6 +32,7 @@ public class HighScoreManager extends ControllerManager {
     }
 
     private static HighScoreManager inst;
+
     public static HighScoreManager getInst() {
         if (inst == null) {
             inst = new HighScoreManager();

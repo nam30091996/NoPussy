@@ -6,8 +6,6 @@ import util.GameUtils;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 
 /**
  * Created by qhuydtvt on 5/13/2016.
@@ -49,7 +47,7 @@ public class MenuGameScene extends GameScene {
 
     @Override
     public void onKeyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ENTER) changeGameScene(GameSceneType.PLAY1);
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) changeGameScene(GameSceneType.LEVEL_1);
     }
 
     @Override
@@ -62,7 +60,7 @@ public class MenuGameScene extends GameScene {
         int x = e.getX();
         int y = e.getY();
         if(x >= DEFAULT_X[0] && x - DEFAULT_X[0] <= WIDTH_BUTTON && y >= DEFAULT_Y[0] && y - DEFAULT_Y[0] <= HEIGHT_BUTTON) {
-            changeGameScene(GameSceneType.PLAY1);
+            changeGameScene(GameSceneType.LEVEL_1);
         }
         else if(x >= DEFAULT_X[0] && x - DEFAULT_X[0] <= WIDTH_BUTTON && y >= DEFAULT_Y[1] && y - DEFAULT_Y[1] <= HEIGHT_BUTTON) {
             changeGameScene(GameSceneType.GUIDE);

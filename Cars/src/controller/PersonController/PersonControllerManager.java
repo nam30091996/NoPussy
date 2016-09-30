@@ -1,7 +1,7 @@
 package controller.PersonController;
 
 import controller.ControllerManager;
-import gamescenes.PlayGameScene;
+import gamescenes.Level3GameScene;
 import model.GameConfig;
 
 /**
@@ -12,19 +12,20 @@ public class PersonControllerManager extends ControllerManager {
 
     @Override
     public void run() {
-        if(!PlayGameScene.pause) {
+        if (!Level3GameScene.pause) {
             super.run();
-            count ++;
+            count++;
         }
-        if(GameConfig.getInst().durationInSeconds(count) >= 15) {
+        if (GameConfig.getInst().durationInSeconds(count) >= 15) {
             count = 0;
             this.singleControllerVector.add(PersonController.create());
         }
     }
 
     private static PersonControllerManager inst;
+
     public static PersonControllerManager getInst() {
-        if(inst == null) {
+        if (inst == null) {
             inst = new PersonControllerManager();
         }
         return inst;

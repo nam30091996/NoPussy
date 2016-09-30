@@ -21,13 +21,13 @@ public class EnemyCarDrawer implements GameDrawer {
 
     @Override
     public void paint(GameObject gameObject, Graphics g) {
-        GameObjectWithHP gameObjectWithHP = (GameObjectWithHP)gameObject;
+        GameObjectWithHP gameObjectWithHP = (GameObjectWithHP) gameObject;
         switch ((gameObjectWithHP.getLifeState())) {
             case ALIVE:
                 aliveGameDrawer.paint(gameObject, g);
                 break;
             case DYING:
-                if(dyingGameDrawer == null) {
+                if (dyingGameDrawer == null) {
                     gameObjectWithHP.setLifeState(LifeState.DEAD);
                 } else {
                     dyingGameDrawer.paint(gameObject, g);

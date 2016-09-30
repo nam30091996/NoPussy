@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * Created by MyComputer on 5/16/2016.
  */
-public class CarPlayerDrawer implements GameDrawer{
+public class CarPlayerDrawer implements GameDrawer {
     private GameDrawer normal;
     private GameDrawer shield;
     private GameDrawer shoot;
@@ -24,8 +24,8 @@ public class CarPlayerDrawer implements GameDrawer{
 
     @Override
     public void paint(GameObject gameObject, Graphics g) {
-        CarPlayer carPlayer = (CarPlayer)gameObject;
-        switch(carPlayer.getCarPlayerStatus()) {
+        CarPlayer carPlayer = (CarPlayer) gameObject;
+        switch (carPlayer.getCarPlayerStatus()) {
             case NORMAL:
                 normal.paint(gameObject, g);
                 break;

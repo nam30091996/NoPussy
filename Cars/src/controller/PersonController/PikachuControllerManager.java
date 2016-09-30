@@ -1,7 +1,7 @@
 package controller.PersonController;
 
 import controller.ControllerManager;
-import gamescenes.PlayGameScene;
+import gamescenes.Level3GameScene;
 import model.GameConfig;
 
 /**
@@ -12,19 +12,20 @@ public class PikachuControllerManager extends ControllerManager {
 
     @Override
     public void run() {
-        if(!PlayGameScene.pause) {
+        if (!Level3GameScene.pause) {
             super.run();
-            count ++;
+            count++;
         }
-        if(GameConfig.getInst().durationInSeconds(count) >= 10) {
+        if (GameConfig.getInst().durationInSeconds(count) >= 10) {
             count = 0;
             this.singleControllerVector.add(PikachuController.create());
         }
     }
 
     private static PikachuControllerManager inst;
+
     public static PikachuControllerManager getInst() {
-        if(inst == null) {
+        if (inst == null) {
             inst = new PikachuControllerManager();
         }
         return inst;

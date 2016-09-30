@@ -34,17 +34,17 @@ public class CoinController extends SingleController implements Colliable {
 
     public void run() {
         super.run();
-        if(!GameConfig.getInst().isInScreen(this.gameObject.getRect())) {
+        if (!GameConfig.getInst().isInScreen(this.gameObject.getRect())) {
             this.gameObject.setAlive(false);
         }
     }
 
     @Override
     public void onCollide(Colliable c) {
-        if(c instanceof CarPlayerController) {
+        if (c instanceof CarPlayerController) {
             this.gameObject.setAlive(false);
-            ((CarPlayer)c.getGameObject()).increasePoint();
-            if(CarPlayer.getPoint() % CoinControllerManager.getInst().INCREASE_SPEED_TIME == 0 && CarPlayer.getPoint() != 0) {
+            ((CarPlayer) c.getGameObject()).increasePoint();
+            if (CarPlayer.getPoint() % CoinControllerManager.INCREASE_SPEED_TIME == 0 && CarPlayer.getPoint() != 0) {
                 EnemyCarController.increaseSpeed();
             }
         }
@@ -63,11 +63,6 @@ public class CoinController extends SingleController implements Colliable {
                 imageDrawer = new ImageDrawer("resources/red_coin.png");
                 coinController = new CoinController(coin, imageDrawer);
                 break;
-//            case ULTRA:
-//                String[] images = new String[] {"resources/red_coin.png","resources/coin.png","resources/blue_coin.png"};
-//                AnimationDrawer animationDrawer = new AnimationDrawer(images);
-//                coinController = new CoinController(coin,animationDrawer);
-//                break;
         }
         return coinController;
     }

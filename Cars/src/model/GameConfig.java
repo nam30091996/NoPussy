@@ -11,7 +11,7 @@ public class GameConfig {
     public static final int DEFAULT_THREAD_DELAY = 17;
     //DuTQ: điểm xuất phát của xe địch
     public static final Point[] LANE = new Point[]{new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT),
-        new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 3 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT),
+            new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 3 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT),
             new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 5 - EnemyCar.WIDTH / 2 + 8, -EnemyCar.HEIGHT),
             new Point(GameConfig.DEFAULT_SCREEN_WIDTH / 8 * 7 - EnemyCar.WIDTH / 2, -EnemyCar.HEIGHT)};
 

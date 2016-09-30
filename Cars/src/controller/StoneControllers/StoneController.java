@@ -17,7 +17,7 @@ import java.awt.*;
  * Created by 1918 on 15-May-16.
  */
 public class StoneController extends SingleController implements Colliable {
-    public static final int SPEED = 1;
+    private static final int SPEED = 1;
     private int speed = SPEED;
 
     public StoneController(GameObject gameObject, GameDrawer gameDrawer) {
@@ -43,13 +43,13 @@ public class StoneController extends SingleController implements Colliable {
 
     @Override
     public void onCollide(Colliable c) {
-        if((c instanceof CarPlayerController && !CarPlayerController.isFly()) || c instanceof BulletController){
+        if ((c instanceof CarPlayerController && !CarPlayerController.isFly()) || c instanceof BulletController) {
             this.gameObject.setAlive(false);
         }
     }
 
     public static StoneController create() {
-        Stone stone = new Stone((int)(Math.random() * (GameConfig.DEFAULT_SCREEN_WIDTH - Stone.STONE_WIDTH)), -Stone.STONE_HEIGHT, Stone.STONE_WIDTH, Stone.STONE_HEIGHT);
+        Stone stone = new Stone((int) (Math.random() * (GameConfig.DEFAULT_SCREEN_WIDTH - Stone.STONE_WIDTH)), -Stone.STONE_HEIGHT, Stone.STONE_WIDTH, Stone.STONE_HEIGHT);
         ImageDrawer imageDrawer = new ImageDrawer("resources/stone.png");
         StoneController stoneController = new StoneController(stone, imageDrawer);
         return stoneController;

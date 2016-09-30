@@ -12,11 +12,10 @@ import java.net.URL;
  */
 public class GameUtils {
 
-    public static int [] getDigit(int number) {
+    public static int[] getDigit(int number) {
         String temp = Integer.toString(number);
         int[] digits = new int[temp.length()];
-        for (int i = 0; i < temp.length(); i++)
-        {
+        for (int i = 0; i < temp.length(); i++) {
             digits[i] = temp.charAt(i) - '0';
         }
         return digits;
@@ -34,10 +33,9 @@ public class GameUtils {
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
             clip.start();
-            if(repeat) {
+            if (repeat) {
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
-            }
-            else {
+            } else {
                 clip.loop(0);
             }
         } catch (UnsupportedAudioFileException e) {

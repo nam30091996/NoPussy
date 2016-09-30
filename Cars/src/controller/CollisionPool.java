@@ -17,27 +17,26 @@ public class CollisionPool {
         colliableVector = new Vector<Colliable>();
     }
 
-    public void add(Colliable c){
+    public void add(Colliable c) {
         this.colliableVector.add(c);
     }
 
     public void run() {
-//        System.out.println(this.colliableVector.size());
         Iterator<Colliable> iterator = colliableVector.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Colliable c = iterator.next();
-            if(!c.getGameObject().isAlive()){
+            if (!c.getGameObject().isAlive()) {
                 iterator.remove();
             }
         }
 
         for (int i = 0; i < colliableVector.size() - 1; i++) {
-            for(int j = i + 1; j < colliableVector.size();j++) {
+            for (int j = i + 1; j < colliableVector.size(); j++) {
                 Colliable ci = colliableVector.get(i);
                 Colliable cj = colliableVector.get(j);
                 Rectangle ri = ci.getGameObject().getRect();
                 Rectangle rj = cj.getGameObject().getRect();
-                if(ri.intersects(rj)){
+                if (ri.intersects(rj)) {
                     ci.onCollide(cj);
                     cj.onCollide(ci);
                 }
@@ -46,39 +45,38 @@ public class CollisionPool {
     }
 
     private static CollisionPool inst;
+
     public static CollisionPool getInst() {
-        if(inst == null){
+        if (inst == null) {
             inst = new CollisionPool();
         }
         return inst;
     }
 
-    public void reset() {
+    public void resetAll() {
         Iterator<Colliable> iterator = colliableVector.iterator();
-        while(iterator.hasNext()) {
-            Colliable c = iterator.next();
-                iterator.remove();
+        while (iterator.hasNext()) {
+            iterator.next();
+            iterator.remove();
         }
         System.out.println(colliableVector.size());
     }
 
-    public void reset1() {
+    public void reset() {
         Iterator<Colliable> iterator = colliableVector.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Colliable c = iterator.next();
-            if(c instanceof CarPlayerController) {
+            if (c instanceof CarPlayerController) {
 
-            }
-            else iterator.remove();
+            } else iterator.remove();
         }
-        //System.out.println(colliableVector.size());
     }
 
     public void remove(Colliable tagget) {
         Iterator<Colliable> iterator = colliableVector.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Colliable c = iterator.next();
-            if(c == tagget) {
+            if (c == tagget) {
                 iterator.remove();
             }
         }

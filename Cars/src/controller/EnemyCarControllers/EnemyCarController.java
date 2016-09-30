@@ -4,10 +4,9 @@ import controller.BulletControllers.BulletController;
 import controller.CarPlayerControllers.CarPlayerController;
 import controller.Colliable;
 import controller.CollisionPool;
-import controller.PersonController.PersonController;
 import controller.PersonController.PersonControllerManager;
 import controller.SingleController;
-import gamescenes.PlayGameScene;
+import gamescenes.Level3GameScene;
 import model.*;
 import util.GameUtils;
 import view.DeadAnimationDrawer;
@@ -67,7 +66,7 @@ public class EnemyCarController extends SingleController implements Colliable {
     }
 
     public static void increaseSpeed() {
-        speed ++;
+        speed++;
     }
 
     public static void increaseSpeed(int delta) {
@@ -83,23 +82,22 @@ public class EnemyCarController extends SingleController implements Colliable {
     }
 
 
-
     @Override
     public void run() {
         System.out.println(speed);
-        if ((!PlayGameScene.pause) &&
+        if ((!Level3GameScene.pause) &&
                 (PersonControllerManager.getInst().size() == 0 ||
-                        this.lanePosition != ((Person)PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane() ||
-                        (this.lanePosition == ((Person)PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane() && (this.gameObject.getY() <= (350 - EnemyCar.HEIGHT - 10) || this.gameObject.getY() >= (350 - EnemyCar.HEIGHT))))){
+                        this.lanePosition != ((Person) PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane() ||
+                        (this.lanePosition == ((Person) PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane() && (this.gameObject.getY() <= (350 - EnemyCar.HEIGHT - 10) || this.gameObject.getY() >= (350 - EnemyCar.HEIGHT))))) {
             super.run();
-            count ++;
+            count++;
         } else {
-            count2 ++;
-            if(count2 == 1) {
+            count2++;
+            if (count2 == 1) {
                 GameUtils.playSound("resources/car_sound.wav", false);
             }
         }
-        if(GameConfig.getInst().durationInSeconds(count) >= 1 && this.enemyCarType == EnemyCarType.BLACK) {
+        if (GameConfig.getInst().durationInSeconds(count) >= 1 && this.enemyCarType == EnemyCarType.BLACK) {
             count = 0;
             switch (this.lanePosition) {
                 case LANE1:
@@ -119,19 +117,18 @@ public class EnemyCarController extends SingleController implements Colliable {
             int lane;
             //do {
 
-                lane = (int) (Math.random() * 3);
-                lane --;
+            lane = (int) (Math.random() * 3);
+            lane--;
             //} while ((this.numberLane == 0 && lane == -1) || (this.numberLane == 3 && lane == 1));
-            if(!(this.numberLane == 0 && lane == -1) && !(this.numberLane == 3 && lane == 1)) {
+            if (!(this.numberLane == 0 && lane == -1) && !(this.numberLane == 3 && lane == 1)) {
                 this.getGameObject().setX(GameConfig.LANE[this.numberLane + lane].x);
                 if (!check(this)) this.getGameObject().setX(GameConfig.LANE[this.numberLane].x);
             }
         }
-        if(((EnemyCar)this.getGameObject()).getLifeState() == LifeState.DYING) {
+        if (((EnemyCar) this.getGameObject()).getLifeState() == LifeState.DYING) {
             CollisionPool.getInst().remove(this);
             this.gameVector.dy = 0;
-        }
-        else {
+        } else {
             this.gameVector.dy = speed;
         }
         if (!GameConfig.getInst().isInScreen(this.gameObject) && !GameConfig.getInst().isInStartPosition(this.gameObject)) {
@@ -140,12 +137,14 @@ public class EnemyCarController extends SingleController implements Colliable {
     }
 
     private boolean check(EnemyCarController controller) {
-        for(SingleController enemyCarController : EnemyCarControllerManager.getInst().getSingleControllerVector()) {
-            if((((EnemyCarController)enemyCarController).getEnemyCarType() != EnemyCarType.BLACK
-                    && controller.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect()))) return false;
-            if(((EnemyCarController)enemyCarController).getEnemyCarType() == EnemyCarType.BLACK
+        for (SingleController enemyCarController : EnemyCarControllerManager.getInst().getSingleControllerVector()) {
+            if ((((EnemyCarController) enemyCarController).getEnemyCarType() != EnemyCarType.BLACK
+                    && controller.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())))
+                return false;
+            if (((EnemyCarController) enemyCarController).getEnemyCarType() == EnemyCarType.BLACK
                     && enemyCarController != controller
-                    && controller.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect())) return false;
+                    && controller.getGameObject().getRect().intersects(enemyCarController.getGameObject().getRect()))
+                return false;
         }
         return true;
     }
@@ -160,14 +159,14 @@ public class EnemyCarController extends SingleController implements Colliable {
     @Override
     public void onCollide(Colliable c) {
         if ((c instanceof CarPlayerController && !CarPlayerController.isFly()) || c instanceof BulletController) {
-            ((EnemyCar)this.gameObject).decreaseHP();
+            ((EnemyCar) this.gameObject).decreaseHP();
         }
     }
 
     //DuTQ: tạo ô tô địch theo loại ô tô và làn
     public static EnemyCarController create(EnemyCarType enemyCarType, LanePosition lanePosition) {
         EnemyCarController enemyCarController = null;
-        if (PersonControllerManager.getInst().size() == 0 || lanePosition != ((Person)PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane()) {
+        if (PersonControllerManager.getInst().size() == 0 || lanePosition != ((Person) PersonControllerManager.getInst().getSingleControllerVector().get(0).getGameObject()).getLane()) {
             EnemyCar enemyCar = null;
             switch (lanePosition) {
                 case LANE1:

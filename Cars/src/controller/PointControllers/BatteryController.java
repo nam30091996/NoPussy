@@ -11,7 +11,7 @@ import java.awt.*;
 /**
  * Created by MyComputer on 5/21/2016.
  */
-public class BatteryController extends SingleController{
+public class BatteryController extends SingleController {
     public static final int WIDTH_BATTERY = 20;
     public static final int HEIGHT_BATTERY = 40;
 
@@ -29,7 +29,7 @@ public class BatteryController extends SingleController{
     }
 
     public void updateBattery(int battery) {
-        switch(battery) {
+        switch (battery) {
             case 1:
                 this.gameDrawer = new ImageDrawer("resources/battery/battery1.png");
                 break;
@@ -49,6 +49,7 @@ public class BatteryController extends SingleController{
     }
 
     private static BatteryController inst;
+
     public static BatteryController getInst() {
         if (inst == null) {
             GameObject gameObject = new GameObject(GameConfig.DEFAULT_SCREEN_WIDTH - WIDTH_BATTERY - 10, GamePointController.DEFAULT_Y + Heart.HEIGHT + 10, WIDTH_BATTERY, HEIGHT_BATTERY);

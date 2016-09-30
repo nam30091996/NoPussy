@@ -11,12 +11,12 @@ import java.awt.event.MouseEvent;
  * Created by MyComputer on 5/21/2016.
  */
 public class AboutScene extends GameScene {
-    public final int DEFAULT_X = 10;
-    public final int DEFAULT_Y = 30;
-    public final int WIDTH_BUTTON = 30;
-    public final int HEIGHT_BUTTON = 30;
+    private final int DEFAULT_X = 10;
+    private final int DEFAULT_Y = 30;
+    private final int WIDTH_BUTTON = 30;
+    private final int HEIGHT_BUTTON = 30;
 
-    Image backgroundImage;
+    private Image backgroundImage;
     private Image backImage;
 
     public AboutScene() {

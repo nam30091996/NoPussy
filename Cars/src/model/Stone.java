@@ -6,6 +6,7 @@ package model;
 public class Stone extends GameObject {
     public static final int STONE_WIDTH = 30;
     public static final int STONE_HEIGHT = 30;
+
     public Stone(int x, int y, int width, int height) {
         super(x, y, width, height);
     }

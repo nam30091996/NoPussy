@@ -13,9 +13,9 @@ import java.awt.*;
  */
 public class GamePointControllerManager extends ControllerManager {
 
-    private GamePointControllerManager(){
+    private GamePointControllerManager() {
 
-    };
+    }
 
 
     @Override
@@ -25,7 +25,7 @@ public class GamePointControllerManager extends ControllerManager {
 
     public void updatePoint(int point) {
         this.singleControllerVector.removeAllElements();
-        int [] digits = GameUtils.getDigit(point);
+        int[] digits = GameUtils.getDigit(point);
         int tempX = GamePointController.DEFAULT_X;
         for (int digit : digits) {
             this.singleControllerVector.add(
@@ -37,7 +37,7 @@ public class GamePointControllerManager extends ControllerManager {
 
     public void paintPointGameOver(int point) {
         this.singleControllerVector.removeAllElements();
-        int [] digits = GameUtils.getDigit(point);
+        int[] digits = GameUtils.getDigit(point);
         int tempX = GameOverScene.DEFAULT_X[digits.length - 1];
         for (int digit : digits) {
             this.singleControllerVector.add(
@@ -54,6 +54,7 @@ public class GamePointControllerManager extends ControllerManager {
     }
 
     private static GamePointControllerManager inst;
+
     public static GamePointControllerManager getInst() {
         if (inst == null) {
             inst = new GamePointControllerManager();

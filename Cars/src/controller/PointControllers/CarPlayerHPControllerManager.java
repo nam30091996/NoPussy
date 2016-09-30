@@ -12,21 +12,9 @@ import view.ImageDrawer;
  */
 public class CarPlayerHPControllerManager extends ControllerManager {
 
-//    public void updateHP(int hp) {
-//        this.singleControllerVector.removeAllElements();
-//        int [] digits = GameUtils.getDigit(hp);
-//        int tempX = GameConfig.DEFAULT_SCREEN_WIDTH - GamePoint.WIDTH * 2;
-//        for (int digit : digits) {
-//            this.singleControllerVector.add(
-//                    GamePointController.create(digit, tempX, GamePointController.DEFAULT_Y, GamePoint.WIDTH, GamePoint.HEIGHT )
-//            );
-//            tempX += GamePoint.WIDTH - 5;
-//        }
-//    }
-
     public void updateHP(int hp) {
         this.singleControllerVector.removeAllElements();
-        for(int i = 0; i < hp; i ++) {
+        for (int i = 0; i < hp; i++) {
             Heart heart = new Heart(GameConfig.DEFAULT_SCREEN_WIDTH - 10 - (i + 1) * 25, GamePointController.DEFAULT_Y, Heart.WIDTH, Heart.HEIGHT);
             ImageDrawer imageDrawer = new ImageDrawer("resources/heart.png");
             CarPlayerHPController carPlayerHPController = new CarPlayerHPController(heart, imageDrawer);
@@ -35,6 +23,7 @@ public class CarPlayerHPControllerManager extends ControllerManager {
     }
 
     private static CarPlayerHPControllerManager inst;
+
     public static CarPlayerHPControllerManager getInst() {
         if (inst == null) {
             inst = new CarPlayerHPControllerManager();

@@ -6,5 +6,4 @@ package controller.CoinControllers;
 public enum CoinType {
     GREEN,
     RED,
-    ULTRA
 }
